@@ -1,10 +1,9 @@
 # Team-Gao-Yuan-Uriuriboo-KazukiSenda
-## Usercase-Domain_Model
-![IMAGE](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/Usercase-Domain_Model.drawio.png)
-## Usercase-Diagram
-![IMAGE](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/Usercase-Diagram.png)
-## Usercase-Robustness_Diagrams(Login)
-![IMAGE](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/Usercase-Robustness_Diagrams(login).drawio.png)
-## Usercase-Robustness_Diagrams(Rent or Borrow)
-![IMAGE](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/Usercase-Robustness_Diagrams(rent_or_borrow).drawio.png)
+## Tasks for week two
+|name|diagram|created by|
+|---|---|---|
+|Usercase-Domain_Model|![IMAGE](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/Usercase-Domain_Model.drawio.png)|[@Uriuriboo](https://github.com/uriuriboo)|
+|Usercase-Diagram|![IMAGE](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/Usercase-Diagram.png)|[@Yuan](https://github.com/WEI44ZHEYUAN)|
+|Usercase-Robustness_Diagrams(Login)|![IMAGE](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/Usercase-Robustness_Diagrams(login).drawio.png)|[@KazukiSenda](https://github.com/KazukiSenda)|
+|Usercase-Robustness_Diagrams(Rent or Borrow)|![IMAGE](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/Usercase-Robustness_Diagrams(rent_or_borrow).drawio.png)|[@KazukiSenda](https://github.com/KazukiSenda)|
 
