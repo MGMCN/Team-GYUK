@@ -1,6 +1,6 @@
 # Team-Gao-Yuan-Uriuriboo-KazukiSenda
 ## Tasks for week two
-|name|diagram|created by|
+|name|contents|created by|
 |---|---|---|
 |Usercase-Domain_Model|![IMAGE](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/Usercase-Domain_Model.drawio.png)|[@Uriuriboo](https://github.com/uriuriboo)|
 |Usercase-Diagram|![IMAGE](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/Usercase-Diagram.png)|[@Yuan](https://github.com/WEI44ZHEYUAN)|
