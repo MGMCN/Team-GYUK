@@ -1,7 +1,7 @@
 # development plan
 
-Please forgive me for any inconsiderate requirements.  
-If you have any comments please create an issue directly and pr. thank you very much.
+If you have any comments please create an [issue](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/issues) directly and pr. 
+Thank you very much.
 
 ## Server (flask+mysql)
 
