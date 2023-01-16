@@ -15,4 +15,9 @@ Then you can use the following command to log in to the mysql server.
 sudo docker exec -it mysql-server mysql -u root -p
 ```
 ## Through the Sequel Pro
+![IMAGE](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/image/Sequelpro.png)
+ps : You can also use other software such as mysql workbench to connect.
 
+## Through Code
+[Flask-SQLAlchemy](https://pythonbasics.org/flask-sqlalchemy/) is recommended.  
+Or you might use another library, which is also possible.
