@@ -1,5 +1,5 @@
 # How to use our db
-Please first make sure that you are connected to our campus network and can ping the following ip address.
+❕❕❕ Please first make sure that you are connected to our campus network and can ping the following ip address ❕❕❕
 ```
 ip:163.221.29.193  
 port:3306
