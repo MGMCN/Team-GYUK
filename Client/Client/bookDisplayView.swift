@@ -36,14 +36,20 @@ struct bookDisplayView: View {
                                 Image(systemName: "book.fill")
                                     .foregroundColor(.white)
                             }
+                            .padding(.bottom)
                             .font(.headline)
                             .foregroundColor(.white)
                     ) {
                         ForEach(books, id: \.self) { book in
-                            Text(book.capitalized)
-                                .font(.caption)
-                                .foregroundColor(.black)
-                                .padding(.vertical)
+                            HStack{
+                                Image(systemName: "book.closed.circle.fill")
+                                    .foregroundColor(.blue) // .orange
+                                    .font(.title2)
+                                Text(book.capitalized)
+                                    .font(.caption)
+                                    .foregroundColor(.black)
+                                    .padding(.vertical)
+                            }
                                 
                         }
                         //                    .onDelete(perform: delete)
