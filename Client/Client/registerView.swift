@@ -163,6 +163,7 @@ struct registerView: View {
             .frame(maxWidth: .infinity)
             .background(Color.white)
             .cornerRadius(15)
+            .shadow(radius: 15)
 //            .onTapGesture {
 //                handleNextButtonPressed()
 //            }

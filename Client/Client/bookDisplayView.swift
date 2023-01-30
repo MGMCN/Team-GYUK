@@ -10,7 +10,8 @@ import SwiftUI
 struct bookDisplayView: View {
     
     @State var books: [String] = [
-        "book1", "book2", "book3", "book4", "book5", "book6", "book7", "book8"
+        "book1", "book2", "book3", "book4", "book5", "book6", "book7", "book8",
+        "book9", "book10"
     ]
     @State var rt=false
     
@@ -61,7 +62,8 @@ struct bookDisplayView: View {
                 }
                 .scrollContentBackground(.hidden)
                 .background(.blue)
-//                .cornerRadius(30)
+                .cornerRadius(30)
+                .shadow(radius: 10)
             }
 //                            .accentColor(.purple)
 //                .listStyle(SidebarListStyle())
