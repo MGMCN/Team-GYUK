@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct bookDisplayView: View {
-    
     @State var books: [String] = [
         "book1", "book2", "book3", "book4", "book5", "book6", "book7", "book8",
-        "book9", "book10"
+        "book9", "book10",
     ]
-    @State var rt=false
-    
+    @State var rt = false
+
     var body: some View {
-        
         VStack(alignment: .leading) {
-            HStack{
+            HStack {
                 returnButton
                 Spacer()
                 Text("library").foregroundColor(.white).font(.largeTitle)
@@ -28,21 +26,21 @@ struct bookDisplayView: View {
                     .font(.largeTitle)
                 Spacer(minLength: 106)
             }
-            VStack{
+            VStack {
                 List {
                     Section(
                         header:
-                            HStack {
-                                Text("Book Name").foregroundColor(.white)
-                                Image(systemName: "book.fill")
-                                    .foregroundColor(.white)
-                            }
-                            .padding(.bottom)
-                            .font(.headline)
-                            .foregroundColor(.white)
+                        HStack {
+                            Text("Book Name").foregroundColor(.white)
+                            Image(systemName: "book.fill")
+                                .foregroundColor(.white)
+                        }
+                        .padding(.bottom)
+                        .font(.headline)
+                        .foregroundColor(.white)
                     ) {
                         ForEach(books, id: \.self) { book in
-                            HStack{
+                            HStack {
                                 Image(systemName: "text.book.closed.fill")
                                     .foregroundColor(.blue) // .orange
                                     .font(.title2)
@@ -51,14 +49,11 @@ struct bookDisplayView: View {
                                     .foregroundColor(.black)
                                     .padding(.vertical)
                             }
-                                
                         }
                         //                    .onDelete(perform: delete)
                         //                    .onMove(perform: move)
                         .listRowBackground(Color.white)
                     }
-                    
-                    
                 }
                 .scrollContentBackground(.hidden)
                 .background(.blue)
@@ -74,19 +69,18 @@ struct bookDisplayView: View {
         .padding()
         .background(.blue)
     }
-    var returnButton : some View{
+
+    var returnButton: some View {
         Button(
             action: {
                 self.rt.toggle()
-            })
-        {
-            Image(systemName:"arrow.backward.circle")
-                .foregroundColor(.white)
-                .font(.title3)
-        }
-        .padding()
+            }) {
+                Image(systemName: "arrow.backward.circle")
+                    .foregroundColor(.white)
+                    .font(.title3)
+            }
+            .padding()
     }
-    
 }
 
 struct bookDisplayView_Previews: PreviewProvider {

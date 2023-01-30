@@ -9,16 +9,15 @@ import SwiftUI
 
 struct homeView: View {
     var body: some View {
-        VStack(spacing: 30)
-        {
+        VStack(spacing: 30) {
             Spacer()
-            
+
             Image(systemName: "book.circle.fill")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 200, height: 200)
                 .foregroundColor(.white)
-            
+
             Text("Borrow your book.")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
@@ -27,14 +26,14 @@ struct homeView: View {
                     Capsule(style: .continuous)
                         .frame(height: 3)
                         .offset(y: 5)
-                        .foregroundColor(.white)
-                    , alignment: .bottom
+                        .foregroundColor(.white),
+                    alignment: .bottom
                 )
-            
+
             Text("This software is designed to help you borrow and return books smoothly.")
                 .fontWeight(.medium)
                 .foregroundColor(.white)
-            
+
             Spacer()
             Spacer()
             signUpButton
@@ -45,7 +44,7 @@ struct homeView: View {
         .padding()
         .background(Color.blue)
     }
-    
+
     var signUpButton: some View {
         Text("SIGN UP")
             .font(.headline)
@@ -59,7 +58,7 @@ struct homeView: View {
 //                handleNextButtonPressed()
 //            }
     }
-    
+
     var loginButton: some View {
         Text("LOGIN")
             .font(.headline)
@@ -73,7 +72,6 @@ struct homeView: View {
 //                handleNextButtonPressed()
 //            }
     }
-    
 }
 
 struct homeView_Previews: PreviewProvider {
