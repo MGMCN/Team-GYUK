@@ -31,6 +31,7 @@ struct registerView: View {
                 {
                     Image(systemName:"arrow.backward.circle")
                         .foregroundColor(.white)
+                        .font(.title3)
                 }
                 .padding()
                 
