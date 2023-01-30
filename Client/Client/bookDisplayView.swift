@@ -42,7 +42,7 @@ struct bookDisplayView: View {
                     ) {
                         ForEach(books, id: \.self) { book in
                             HStack{
-                                Image(systemName: "book.closed.circle.fill")
+                                Image(systemName: "text.book.closed.fill")
                                     .foregroundColor(.blue) // .orange
                                     .font(.title2)
                                 Text(book.capitalized)
