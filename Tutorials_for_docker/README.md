@@ -86,3 +86,5 @@ $ sudo docker exec -it mysql mysql -u root -p
 ```
 ## Connecting to the database via code
 [@Yuan](https://github.com/WEI44ZHEYUAN) and I have tested the code, if you want to connect to the database through the code please use Yuan's code directly.
+## Acknowledgements
+Thanks to [@Yuan](https://github.com/WEI44ZHEYUAN) for testing docker-compose.
