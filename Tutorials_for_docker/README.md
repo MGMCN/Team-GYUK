@@ -55,7 +55,6 @@ services:
       MYSQL_DATABASE: Serverdb
     volumes:
       - mysql-data:/var/lib/mysql
-
 volumes:
   mysql-data:
   ```
