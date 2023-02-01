@@ -1,4 +1,4 @@
 # MacOS
 .DS_Store
 # PyCharm
-.pyc
+*.pyc
