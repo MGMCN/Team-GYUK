@@ -76,8 +76,8 @@ Creating mysql           ... done
 $ docker-compose down
 
 ```
-## Let's understand the docker-compose file
-Our container's external port is 8883, and then we mapped the container's internal port 5000 to the external port 8883. So the address to access our service is 127.0.0.1:8883.   
+## Let's learn the docker-compose file
+Our flask container's external port is 8883, and then we mapped the container's internal port 5000 to the external port 8883. So the address to access our service is 127.0.0.1:8883.   
 Similarly our access to the database will be through the container's external port 3306 to access the container's internal port 3306.   
 Our password to connect to the database is 123456, the user name is root, and the database name is Serverdb
 ## Connecting to the database through Terminal
