@@ -70,10 +70,10 @@ Creating server_server_1 ... done
 Creating mysql           ... done
 
 ```
+If you get an ${\color{red}ERROR}$ when installing the library, it is likely that the python version you edited and the version of the library in your exported requirements.txt do not match. Solution 1 delete those mismatched libraries in requirements.txt, solution 2 adjust python version.
 ## Stop docker container
 ```Bash
 $ docker-compose down
-
 ```
 ## Let's learn the docker-compose file
 Our flask container's external port is 8883, and then we mapped the container's internal port 5000 to the external port 8883. So the address to access our service is 127.0.0.1:8883.   
