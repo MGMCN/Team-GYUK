@@ -126,6 +126,7 @@ struct FocusStateBootcamp: View {
                         Text("Login Now")
                             .foregroundColor(.white)
                             .font(.title)
+                            .fontWeight(.semibold)
                             .shadow(radius: 15)
                     }
                     .padding()
