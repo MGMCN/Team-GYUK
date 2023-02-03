@@ -9,12 +9,11 @@ import Foundation
 import SwiftUI
 
 struct FocusStateBootcamp: View {
-    
     enum OnboardingField: Hashable {
         case email
         case password
     }
-    
+
 //    @FocusState private var usernameInFocus: Bool
     @State private var email: String = ""
 //    @FocusState private var passwordInFocus: Bool
@@ -26,9 +25,9 @@ struct FocusStateBootcamp: View {
         VStack(alignment: .leading, spacing: 30) {
             // big logo field
             Spacer()
-            HStack{
+            HStack {
                 Spacer()
-                VStack{
+                VStack {
                     Image(systemName: "book.circle.fill")
                         .resizable()
                         .scaledToFit()
@@ -42,7 +41,7 @@ struct FocusStateBootcamp: View {
                 Spacer()
             }
             Spacer()
-            
+
             // email field
             HStack {
                 Image(systemName: "envelope.circle.fill")
@@ -62,7 +61,7 @@ struct FocusStateBootcamp: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.white)
                 .cornerRadius(15)
-            
+
             // password field
             HStack {
                 Image(systemName: "lock.circle.fill").foregroundColor(.white)
@@ -84,7 +83,7 @@ struct FocusStateBootcamp: View {
                 } else {
                     SecureField("Your password here...", text: $password)
                         .focused($fieldInFocus, equals: .password)
-        //                .focused($passwordInFocus)
+                        //                .focused($passwordInFocus)
                         .padding(.leading)
                         .frame(height: 55)
                         .font(.headline)
@@ -100,24 +99,24 @@ struct FocusStateBootcamp: View {
                     }
                     .padding()
             }
-            
+
             // login button field
-            HStack(){
+            HStack {
                 Spacer()
                 Button(
                     action: {
                         let usernameIsValid = !email.isEmpty
                         let passwordIsValid = !password.isEmpty
-                        if usernameIsValid && passwordIsValid {
+                        if usernameIsValid, passwordIsValid {
                             print("Login")
                         } else if usernameIsValid {
                             fieldInFocus = .password
-        //                    usernameInFocus = false
-        //                    passwordInFocus = true
+                            //                    usernameInFocus = false
+                            //                    passwordInFocus = true
                         } else {
                             fieldInFocus = .email
-        //                    usernameInFocus = true
-        //                    passwordInFocus = false
+                            //                    usernameInFocus = true
+                            //                    passwordInFocus = false
                         }
                     }) {
                         Image(systemName: "airplane.departure")
