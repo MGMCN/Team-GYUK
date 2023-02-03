@@ -10,6 +10,8 @@
 		040A9AC129826D87007E11F2 /* bookDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A9AC029826D87007E11F2 /* bookDisplayView.swift */; };
 		040A9AC529826DD4007E11F2 /* registerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A9AC429826DD4007E11F2 /* registerView.swift */; };
 		040A9AC729826DE6007E11F2 /* homeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A9AC629826DE6007E11F2 /* homeView.swift */; };
+		04891186298CECFD005E8445 /* operationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04891184298CECFD005E8445 /* operationView.swift */; };
+		04891187298CECFD005E8445 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04891185298CECFD005E8445 /* loginView.swift */; };
 		04E5C1CD298229DE004CE174 /* ClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E5C1CC298229DE004CE174 /* ClientApp.swift */; };
 		04E5C1CF298229DE004CE174 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E5C1CE298229DE004CE174 /* ContentView.swift */; };
 		04E5C1D1298229DF004CE174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E5C1D0298229DF004CE174 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 		040A9AC029826D87007E11F2 /* bookDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookDisplayView.swift; sourceTree = "<group>"; };
 		040A9AC429826DD4007E11F2 /* registerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerView.swift; sourceTree = "<group>"; };
 		040A9AC629826DE6007E11F2 /* homeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeView.swift; sourceTree = "<group>"; };
+		04891184298CECFD005E8445 /* operationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = operationView.swift; sourceTree = "<group>"; };
+		04891185298CECFD005E8445 /* loginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
 		04E5C1C9298229DE004CE174 /* Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E5C1CC298229DE004CE174 /* ClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientApp.swift; sourceTree = "<group>"; };
 		04E5C1CE298229DE004CE174 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +61,8 @@
 		04E5C1CB298229DE004CE174 /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				04891185298CECFD005E8445 /* loginView.swift */,
+				04891184298CECFD005E8445 /* operationView.swift */,
 				04E5C1CC298229DE004CE174 /* ClientApp.swift */,
 				04E5C1CE298229DE004CE174 /* ContentView.swift */,
 				04E5C1D0298229DF004CE174 /* Assets.xcassets */,
@@ -148,8 +154,10 @@
 			files = (
 				04E5C1CF298229DE004CE174 /* ContentView.swift in Sources */,
 				040A9AC529826DD4007E11F2 /* registerView.swift in Sources */,
+				04891187298CECFD005E8445 /* loginView.swift in Sources */,
 				04E5C1CD298229DE004CE174 /* ClientApp.swift in Sources */,
 				040A9AC729826DE6007E11F2 /* homeView.swift in Sources */,
+				04891186298CECFD005E8445 /* operationView.swift in Sources */,
 				040A9AC129826D87007E11F2 /* bookDisplayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
