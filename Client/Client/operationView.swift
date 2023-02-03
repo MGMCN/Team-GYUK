@@ -22,42 +22,59 @@ class EnvironmentViewModel: ObservableObject {
     }
     
     func getData() {
-        self.dataArray.append(contentsOf: ["add", "delete", "borrow", "return"])
+        self.dataArray.append(contentsOf: ["Add", "Delete", "Borrow", "Return"])
     }
     
     
 }
 
 struct EnvironmentObjectBootcamp: View {
-    
+
     @StateObject var viewModel: EnvironmentViewModel = EnvironmentViewModel()
     
     var body: some View {
-        NavigationView {
-            ZStack{
-                Color.blue.edgesIgnoringSafeArea(.all)
-                List {
-                    ForEach(viewModel.dataArray, id: \.self) { item in
-                        NavigationLink(
-                            destination: DetailView(selectedItem: item),
-                            label: {
-                                Text(item)
-                            })
-                        
+        VStack(){
+            HStack(){
+                Text("Operation Menu")
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+                Image(systemName: "books.vertical.fill")
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+                Spacer()
+                
+            }.padding()
+            NavigationView {
+                ZStack{
+                    Color.blue.edgesIgnoringSafeArea(.all)
+                    List {
+                        ForEach(viewModel.dataArray, id: \.self) { item in
+                            HStack{
+                                Image(systemName: "gear")
+                                    .foregroundColor(.blue)
+                                    .font(.title2)
+                                NavigationLink(
+                                    destination: DetailView(selectedItem: item),
+                                    label: {
+                                        Text(item)
+                                    })
+                                .padding(.vertical)
+                            }
+                        }
                     }
+                    .fontWeight(.semibold)
+//                    .navigationTitle("Operation Menu")
                 }
-                .navigationTitle("Book Menu")
-                
-                
+                .cornerRadius(30)
+                .padding()
+                .scrollContentBackground(.hidden)
+                .background(.blue)
+                .shadow(radius: 10)
+                //            .shadow(radius: 100)
             }
-            .cornerRadius(30)
-            .padding()
-            .scrollContentBackground(.hidden)
-            .background(.blue)
-//            .shadow(radius: 100)
+            .environmentObject(viewModel)
         }
-        .environmentObject(viewModel)
-        
+        .background(.blue)
     }
 }
 
