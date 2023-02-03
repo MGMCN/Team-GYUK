@@ -1,6 +1,6 @@
-from Server import app
-from Server.auth import authbp
-from Server.bksf import bksfbp
+from __init__ import app
+from auth import authbp
+from bksf import bksfbp
 
 app.register_blueprint(authbp)
 app.register_blueprint(bksfbp)
