@@ -5,9 +5,11 @@ services:
     ports:
       - "8883:5000"
     volumes:
-      - .:/app
+      - .:/Server
     environment:
       FLASK_DEBUG: "true"
+    depends_on:
+      - mysql
   mysql:
     restart: always
     image: zhonghl003/mysql-server:5.7.34-37 # you should modify this (mysql:5.7)
@@ -19,6 +21,5 @@ services:
       MYSQL_DATABASE: Serverdb
     volumes:
       - mysql-data:/var/lib/mysql
-
 volumes:
   mysql-data:

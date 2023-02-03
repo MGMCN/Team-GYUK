@@ -27,8 +27,8 @@ FROM python:3.8
 LABEL maintainer="GAO SHAN"
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
-COPY *.py /app/
-WORKDIR /app
+COPY * /app/Server/
+WORKDIR /app/Server
 CMD ["python3","app.py"]
 ```
 ## Edit the image of mysql in docker-compose.yml to mysql:5.7.    
@@ -41,9 +41,11 @@ services:
     ports:
       - "8883:5000"
     volumes:
-      - .:/app
+      - .:/Server
     environment:
       FLASK_DEBUG: "true"
+    depends_on:
+      - mysql
   mysql:
     restart: always
     image: zhonghl003/mysql-server:5.7.34-37 # you should modify this (mysql:5.7)
@@ -57,7 +59,7 @@ services:
       - mysql-data:/var/lib/mysql
 volumes:
   mysql-data:
-  ```
+```
 ## Run docker-compose!
 After executing this command you will see that your computer is successfully running a container with the flask service and mysql service inside
 ```Bash
