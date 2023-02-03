@@ -1,6 +1,6 @@
-from Server import db, app
-from Server.models import Book
-from Server.forms import BookForm, BookUpdateForm
+from __init__ import db, app
+from models import Book
+from forms import BookForm, BookUpdateForm
 from flask import Blueprint, render_template, redirect, url_for, request
 
 bksfbp = Blueprint('bksfbp',__name__,url_prefix='/books')
