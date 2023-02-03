@@ -2,3 +2,5 @@ Flask
 flask_sqlalchemy
 pymysql
 flask_wtf
+python-dotenv
+mysqlclient
