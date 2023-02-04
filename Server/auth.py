@@ -9,8 +9,7 @@ authbp = Blueprint('authbp',__name__)
 authapp = Flask(__name__)
 
 mysql = MySQL(authapp) 
-
-
+  
 #register (parameter: email, password, name, authorityType)
 @authbp.route('/register', methods=["POST"])
 def register():
