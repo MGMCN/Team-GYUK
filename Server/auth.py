@@ -8,7 +8,7 @@ authbp = Blueprint('authbp',__name__)
 
 authapp = Flask(__name__)
 
-mysql = MySQL(authapp) 
+mysql = MySQL(authapp)
   
 #register (parameter: email, password, name, authorityType)
 @authbp.route('/register', methods=["POST"])
@@ -20,10 +20,10 @@ def register():
     authorityType = request.form["authorityType"]
     # declare the error message as none
     error = None
-    # check the element is empty or not 
+    # check the element is empty or not
     if not email:
         error = "Email is required."
-        return error 
+        return error
     elif not password:
         error = "Password is required."
         return error
@@ -33,18 +33,18 @@ def register():
     # checking the duplicate or the account and store in the datebase
     if error is None:
         try:
-            # extract the email data from the database 
+            # extract the email data from the database
             cur = mysql.connection.cursor()
             cur.execute('''SELECT email FROM user''')
             email_list = []
             for i in cur.fetchall():
                 email_list.append(i['email'])
-            
+
             if email in email_list:
                 return "Email is already registered."
             else:
                 # save new account into the database
-                cur.execute("INSERT INTO user(userId,name,email,pwd,authType) VALUES (%s,%s,%s,%s,%s)",(0,name,email,generate_password_hash(password),authorityType))      
+                cur.execute("INSERT INTO user(userId,name,email,pwd,authType) VALUES (%s,%s,%s,%s,%s)",(0,name,email,generate_password_hash(password),authorityType))
                 mysql.connection.commit()
 
         except cur.IntegrityError:
