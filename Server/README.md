@@ -4,8 +4,8 @@ As a server, it interacts with front-end mobile software and back-end database.
 Make sure you install the corresponding library correctly
 ## Env Requirements
 ```
-Python 3.8+  # for me it's Python 3.10
-Flask 2.0+  # for me it's flask 2.2.2
+Python 3.8+
+Flask 2.0+
 ```
 ## How to run(deprecated)
 ```Bash
