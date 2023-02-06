@@ -12,7 +12,7 @@ services:
       - mysql
   mysql:
     restart: always
-    image: mysql:5.7 # you should modify this (mysql:5.7)
+    image: zhonghl003/mysql-server:5.7.34-37 # you should modify this (mysql:5.7)
     container_name: mysql
     ports:
       - "3306:3306"
@@ -21,6 +21,5 @@ services:
       MYSQL_DATABASE: Serverdb
     volumes:
       - mysql-data:/var/lib/mysql
-
 volumes:
   mysql-data:

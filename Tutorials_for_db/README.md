@@ -1,4 +1,4 @@
-# How to use our db
+# How to use our db (deprecated plz read -> [link](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/Tutorials_for_docker/README.md))
 ❕❕❕ Please first make sure that you are connected to our campus network and can ping the following ip address ❕❕❕
 ```
 ip:163.221.29.193  
