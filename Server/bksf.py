@@ -1,55 +1,76 @@
 from __init__ import db, app
-from models import Book
 from forms import BookForm, BookUpdateForm
 from flask import Blueprint, render_template, redirect, url_for, request
+import json
 
 bksfbp = Blueprint('bksfbp',__name__,url_prefix='/books')
 
 @bksfbp.route('/')
 def show_all():
-   books = Book.query.order_by(Book.bookName.desc()).paginate(page=1, per_page=app.config['ITEMS_PER_PAGE'], error_out=False)
-   return render_template('books/index.html', books = books)
+   cs = db.connection.cursor()
+   cs.execute('''SELECT * FROM book''')
+   result = json.dumps(cs.fetchall())
+   cs.close()
+   return result
 
-@bksfbp.route('/register', methods=['GET','POST'])
+@bksfbp.route('/register', methods=['POST'])
 def register():
+    errors = validate_form_data(request.form)
+    if errors:
+        return errors, 500
+    try:
+        cursor = db.connection.cursor()
+        sql = """INSERT INTO book (bookName, bookStatus) VALUES (%s, %s)"""
+        cursor.execute(sql, extract_form_data(request.form))
+        db.connection.commit()
+    except Exception as e:
+        return str(e), 500
 
-    form = BookForm()
+    return  "Success", 200
 
-    if form.validate_on_submit():
-        book = Book(bookName=form.bookName.data, bookStatus=form.bookStatus.data)
-        db.session.add(book)
-        db.session.commit()
-        return redirect(url_for('bksfbp.show_all'))
+def headers():
+    return ['bookName', 'bookStatus']
+def validate_form_data(form):
+    errors = []
+    for header in headers():
+        if not form[header]:
+            errors.append(f"{header} is empty")
+    return errors
+def row_count():
+    cursor = db.connection.cursor()
+    cursor.execute("SELECT COUNT(*) FROM book")
+    count = cursor.fetchone()[0] # to get current ID
+    return count + 1
+def extract_form_data(form):
+    values = []
+    # values.append(row_count())
+    for header in headers():
+        values.append(form[header])
+    return values
 
-    return render_template('books/register.html', form=form)
-
-@bksfbp.route('/books/<int:id>/update', methods=['GET','POST'])
+@bksfbp.route('/<int:id>/update', methods=['POST'])
 def update(id):
-    book = Book.query.get(id)
-    form = BookUpdateForm()
+    errors = validate_form_data(request.form)
+    if errors:
+        return errors, 500
+    try:
+        cursor = db.connection.cursor()
+        sql = """UPDATE book SET bookName=%s, bookStatus=%s WHERE bookId=%s"""
+        cursor.execute(sql, extract_form_data(request.form) + [id])
+        db.connection.commit()
+    except Exception as e:
+        return str(e), 500
 
-    print(book)
-    print(book.id)
-    print(book.bookName)
+    return  "Success", 200
 
-    if form.validate_on_submit():
-
-        book.bookName = form.bookName.data
-        book.bookStatus = form.bookStatus.data
-        db.session.commit()
-
-        return redirect(url_for('bksfbp.show_all'))
-
-    elif request.method == 'GET':
-        form.bookName.data = book.bookName
-        form.bookStatus.data = book.bookStatus
-
-    return render_template('books/each.html', form=form, id=id)
-
-
-@bksfbp.route('/books/<int:id>/delete', methods=['GET','POST'])
+@bksfbp.route('/<int:id>/delete', methods=['POST'])
 def delete(id):
-    book = Book.query.get(id)
-    db.session.delete(book)
-    db.session.commit()
-    return redirect(url_for('bksfbp.show_all'))
+    try:
+        cursor = db.connection.cursor()
+        sql = """DELETE FROM book WHERE bookId=%s"""
+        cursor.execute(sql, [id])
+        db.connection.commit()
+    except Exception as e:
+        return str(e), 500
+        
+    return  "Success", 200
