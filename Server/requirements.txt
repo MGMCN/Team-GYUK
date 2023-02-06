@@ -1,6 +1,8 @@
-Flask
-flask_sqlalchemy
-pymysql
-flask_wtf
+Flask==2.2.2
+Flask-Bcrypt==1.0.1
+Flask-Login==0.6.2
+Flask-MySQLdb==1.0.1
+Flask-WTF==1.1.1
+mysqlclient==2.1.1
+SQLAlchemy==1.4.46
 python-dotenv
-mysqlclient

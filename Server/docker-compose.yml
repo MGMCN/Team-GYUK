@@ -5,7 +5,7 @@ services:
     ports:
       - "8883:5000"
     volumes:
-      - .:/Server
+      - .:/app/Server
     environment:
       FLASK_DEBUG: "true"
     depends_on:
