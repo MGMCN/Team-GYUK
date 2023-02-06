@@ -5,3 +5,8 @@ Flask-MySQLdb==1.0.1
 Flask-WTF==1.1.1
 mysqlclient==2.1.1
 SQLAlchemy==1.4.46
+<<<<<<< HEAD
+flask-mysql
+
+=======
+>>>>>>> main

@@ -13,7 +13,15 @@ mysql = MySQL(authapp)
 #register (parameter: email, password, name, authorityType)
 @authbp.route('/register', methods=["POST"])
 def register():
+    try:
     # retrieve the data from the request
+<<<<<<< HEAD
+        email = request.form["email"]
+        password = request.form["password"]
+        name = request.form["name"]
+        authorityType = request.form["authorityType"]
+        # checking the duplicate or the account and store in the datebase
+=======
     email = request.form["email"]
     password = request.form["password"]
     name = request.form["name"]
@@ -32,9 +40,14 @@ def register():
         return error
     # checking the duplicate or the account and store in the datebase
     if error is None:
+>>>>>>> main
         try:
             # extract the email data from the database
             cur = mysql.connection.cursor()
+<<<<<<< HEAD
+            cur.execute("INSERT IGNORE INTO user(userId,name,email,pwd,authType) VALUES (%s,%s,%s,%s,%s)",(0,name,email,generate_password_hash(password),authorityType))      
+            mysql.connection.commit()
+=======
             cur.execute('''SELECT email FROM user''')
             email_list = []
             for i in cur.fetchall():
@@ -47,12 +60,15 @@ def register():
                 cur.execute("INSERT INTO user(userId,name,email,pwd,authType) VALUES (%s,%s,%s,%s,%s)",(0,name,email,generate_password_hash(password),authorityType))
                 mysql.connection.commit()
 
+>>>>>>> main
         except cur.IntegrityError:
-            error = f"User {email} is already registered."
+            return f"missing some value"
         else:
             # Success, go to the login page.
             return 'Success'
-    flash(error)
+    except KeyError:
+        # if POST miss some value
+        return "Miss Some value"
 
 
 #login  (parameter: email, password)
