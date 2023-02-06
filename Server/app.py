@@ -15,7 +15,7 @@ app.config['MYSQL_PASSWORD'] = '123456'
 app.config['MYSQL_DB'] = 'Serverdb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
-mysql = MySQL(app) 
+mysql = MySQL(app)
 
 
 @app.route('/')
