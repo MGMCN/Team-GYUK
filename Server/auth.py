@@ -2,7 +2,7 @@ from flask import Blueprint, request, Flask, session
 from flask_mysqldb import MySQL
 from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
-
+import json
 
 
 
@@ -44,23 +44,24 @@ def login():
     password = request.form["password"]
     error = None
     cur = mysql.connection.cursor()
-    email_db = cur.execute(''' SELECT * FROM user WHERE username = ?''', (email,)).fetchone()
+    cur.execute(''' SELECT * FROM user WHERE email = %s ''',(email,))
+    email_db = cur.fetchone()
     if email_db is None:
         error = "Incorrect email."
         return error
-    elif not check_password_hash(email_db["password"], password):
+    elif not check_password_hash(email_db["pwd"], password):
         error = "Incorrect password."
         return error
     
     if error is None:
         # store the user id in a new session and return to the index
         session.clear()
-        session["user_id"] = generate_password_hash(email_db["userId"])
+        session["user_id"] = generate_password_hash(email)
 
     if email_db["authType"] == "Manager":
-        return session["user_id"], 0
+        return json.dumps({"session_key": session["user_id"],"authtype": 0})
     else:
-        return session["user_id"], 1
+        return json.dumps({"session_key": session["user_id"],"authtype": 1})
 
 
 #logout
@@ -68,4 +69,4 @@ def login():
 def logout():
     # Clear the current session, including the stored user id.
     session.clear()
-    return "Logout Success"
+    return ["Logout Success", session]

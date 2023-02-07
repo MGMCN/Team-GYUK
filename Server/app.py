@@ -22,7 +22,7 @@ mysql = MySQL(app)
 def hello_world():  # put application's code here
         return 'Hello World!'
 
-app.route("/database_create")
+@app.route("/database_create")
 def database_create():
     try:
         cur = mysql.connection.cursor()
@@ -61,4 +61,5 @@ def database_create():
     except cur.OperationalError:
         return "Already Exist"
 if __name__ == '__main__':
+    app.secret_key = 'super secret key'
     app.run(host="0.0.0.0", port=5000)
