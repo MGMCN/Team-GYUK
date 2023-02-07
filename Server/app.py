@@ -21,7 +21,7 @@ mysql = MySQL(app)
 @app.route('/')
 def hello_world():  # put application's code here
         return 'Hello World!'
-
+# initialize the database, if exist return message
 @app.route("/database_create")
 def database_create():
     try:
