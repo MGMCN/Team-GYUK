@@ -1,7 +1,9 @@
-from flask import Blueprint, request, Flask, flash
+from flask import Blueprint, request, Flask, session
 from flask_mysqldb import MySQL
 from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
+
+
 
 
 authbp = Blueprint('authbp',__name__)
@@ -29,7 +31,7 @@ def register():
             return f"missing some value"
         else:
             # Success, go to the login page.
-            return 'Success'
+            return 'Register Success'
     except KeyError:
         # if POST miss some value
         return "Miss Some value"
@@ -38,10 +40,32 @@ def register():
 #login  (parameter: email, password)
 @authbp.route('/login', methods=["POST"])
 def login():
-    return "login"
+    email = request.form["email"]
+    password = request.form["password"]
+    error = None
+    cur = mysql.connection.cursor()
+    email_db = cur.execute(''' SELECT * FROM user WHERE username = ?''', (email,)).fetchone()
+    if email_db is None:
+        error = "Incorrect email."
+        return error
+    elif not check_password_hash(email_db["password"], password):
+        error = "Incorrect password."
+        return error
+    
+    if error is None:
+        # store the user id in a new session and return to the index
+        session.clear()
+        session["user_id"] = generate_password_hash(email_db["userId"])
+
+    if email_db["authType"] == "Manager":
+        return session["user_id"], 0
+    else:
+        return session["user_id"], 1
 
 
 #logout
 @authbp.route('/logout')
 def logout():
-    return "logout"
+    # Clear the current session, including the stored user id.
+    session.clear()
+    return "Logout Success"

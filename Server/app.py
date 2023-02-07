@@ -18,11 +18,12 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 
 
-
-
-
 @app.route('/')
 def hello_world():  # put application's code here
+        return 'Hello World!'
+
+app.route("/database_create")
+def database_create():
     try:
         cur = mysql.connection.cursor()
         cur.execute(''' CREATE TABLE `Serverdb`.`user` (
@@ -56,9 +57,8 @@ def hello_world():  # put application's code here
             );
             ''')
         mysql.connection.commit()
+        return "Success"
     except cur.OperationalError:
-
-        return 'Hello World!'
-
+        return "Already Exist"
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)
