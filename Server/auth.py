@@ -25,17 +25,17 @@ def register():
         # checking the duplicate or the account and store in the datebase if not insert the value
         try:
             cur = mysql.connection.cursor()
-            cur.execute("INSERT IGNORE INTO user(userId,name,email,pwd,authType) VALUES (%s,%s,%s,%s,%s)",(0,name,email,generate_password_hash(password),authorityType))      
+            cur.execute("INSERT INTO user(userId,name,email,pwd,authType) VALUES (%s,%s,%s,%s,%s)",(0,name,email,generate_password_hash(password),authorityType))      
             mysql.connection.commit()
         # return if error occurs   
         except cur.IntegrityError:
-            return f"missing some value"
+            return json.dumps({"errorMessage": "Email is already exist", "code": 0})
         else:
             # Success, go to the login page.
-            return 'Register Success'
+            return json.dumps({"processMessage": "Register Successful", "code": 1})
     except KeyError:
         # if POST miss some value
-        return "Miss Some value"
+        return json.dumps({"errorMessage": "Missing Some Value", "code": 0})
 
 
 #login  (parameter: email, password)
@@ -51,10 +51,10 @@ def login():
     email_db = cur.fetchone()
     # if is input wrong return this
     if email_db is None:
-        error = "Incorrect email."
+        error = json.dumps({"errorMessage": "Incorrect email.", "code": 0})
         return error
     elif not check_password_hash(email_db["pwd"], password):
-        error = "Incorrect password."
+        error = json.dumps({"errorMessage": "Incorrect password.", "code": 0})
         return error
 
     if error is None:
@@ -63,9 +63,9 @@ def login():
         session["user_id"] = generate_password_hash(email)
     # return the session key and the authentication type to the frontend
     if email_db["authType"] == "Manager":
-        return json.dumps({"session_key": session["user_id"],"authtype": 0})
+        return json.dumps({"session_key": session["user_id"], "authtype": 0,"processMessage": "Login Successful", "code": 1})
     else:
-        return json.dumps({"session_key": session["user_id"],"authtype": 1})
+        return json.dumps({"session_key": session["user_id"], "authtype": 1,"processMessage": "Login Successful", "code": 1})
 
 
 #logout
@@ -73,4 +73,4 @@ def login():
 def logout():
     # Clear the current session, including the stored user id.
     session.clear()
-    return ["Logout Success", session]
+    return json.dumps({"processMessage": "Logout Successful", "code": 1})

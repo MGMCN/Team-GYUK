@@ -2,6 +2,7 @@ from flask import Flask
 from auth import authbp
 from bksf import bksfbp
 from flask_mysqldb import MySQL
+import json
 
 app = Flask(__name__)
 app.register_blueprint(authbp)
@@ -57,9 +58,9 @@ def database_create():
             );
             ''')
         mysql.connection.commit()
-        return "Success"
+        return json.dumps({"processMessage" : "Create Success", "code": 1})
     except cur.OperationalError:
-        return "Already Exist"
+        return json.dumps({"errorMessage": "Database Already Exist", "code": 0})
 if __name__ == '__main__':
     app.secret_key = 'super secret key'
     app.run(host="0.0.0.0", port=5000)
