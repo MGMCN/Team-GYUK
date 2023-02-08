@@ -7,13 +7,14 @@ First make sure you have Docker and Docker-Compose tools installed on your compu
 Server
 ├── Dockerfile
 ├── README.md
-├── __pycache__
 ├── app.py
-├── auth.py
-├── bksf.py
+├── .
+├── .
+├── .
 ├── docker-compose.yml
 └── requirements.txt
 ```
+# Build your own Docker-container
 ## Export the libraries
 Execute this command in this directory to export the libraries needed to run the flask project.
 ```Bash
