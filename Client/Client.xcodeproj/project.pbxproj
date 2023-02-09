@@ -16,6 +16,8 @@
 		04E5C1CF298229DE004CE174 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E5C1CE298229DE004CE174 /* ContentView.swift */; };
 		04E5C1D1298229DF004CE174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E5C1D0298229DF004CE174 /* Assets.xcassets */; };
 		04E5C1D4298229DF004CE174 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E5C1D3298229DF004CE174 /* Preview Assets.xcassets */; };
+		DCA5AD252994C6F200A85E66 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA5AD242994C6F200A85E66 /* Scan.swift */; };
+		DCA5AD282994D65200A85E66 /* ScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA5AD272994D65200A85E66 /* ScanButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,9 @@
 		04E5C1CE298229DE004CE174 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		04E5C1D0298229DF004CE174 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04E5C1D3298229DF004CE174 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DCA5AD242994C6F200A85E66 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
+		DCA5AD262994D5D700A85E66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DCA5AD272994D65200A85E66 /* ScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,10 +66,13 @@
 		04E5C1CB298229DE004CE174 /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				DCA5AD262994D5D700A85E66 /* Info.plist */,
 				04891185298CECFD005E8445 /* loginView.swift */,
 				04891184298CECFD005E8445 /* operationView.swift */,
 				04E5C1CC298229DE004CE174 /* ClientApp.swift */,
 				04E5C1CE298229DE004CE174 /* ContentView.swift */,
+				DCA5AD272994D65200A85E66 /* ScanButton.swift */,
+				DCA5AD242994C6F200A85E66 /* Scan.swift */,
 				04E5C1D0298229DF004CE174 /* Assets.xcassets */,
 				04E5C1D2298229DF004CE174 /* Preview Content */,
 				040A9AC029826D87007E11F2 /* bookDisplayView.swift */,
@@ -153,7 +161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E5C1CF298229DE004CE174 /* ContentView.swift in Sources */,
+				DCA5AD282994D65200A85E66 /* ScanButton.swift in Sources */,
 				040A9AC529826DD4007E11F2 /* registerView.swift in Sources */,
+				DCA5AD252994C6F200A85E66 /* Scan.swift in Sources */,
 				04891187298CECFD005E8445 /* loginView.swift in Sources */,
 				04E5C1CD298229DE004CE174 /* ClientApp.swift in Sources */,
 				040A9AC729826DE6007E11F2 /* homeView.swift in Sources */,
@@ -289,6 +299,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Client/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Client/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "文字認識";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -317,6 +329,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Client/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Client/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "文字認識";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
