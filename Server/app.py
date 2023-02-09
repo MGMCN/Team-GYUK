@@ -39,14 +39,14 @@ def database_create():
             ''')
         cur.execute(''' CREATE TABLE `book` (
             `bookName` varchar(255) NOT NULL,
-            `bookId` int(255) NOT NULL,
+            `bookId` int(255) NOT NULL AUTO_INCREMENT,
             `bookStatus` varchar(255) NOT NULL,
             PRIMARY KEY (`bookId`),
             UNIQUE KEY `unique_bookId` (`bookId`)
             );
             ''')
         cur.execute(''' CREATE TABLE `borrowStatus` (
-            `borrowId` int(255) NOT NULL,
+            `borrowId` int(255) NOT NULL AUTO_INCREMENT,
             `userId` int(255) NOT NULL,
             `bookId` int(255) NOT NULL,
             PRIMARY KEY (`borrowId`),
