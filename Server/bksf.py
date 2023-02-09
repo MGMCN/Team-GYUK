@@ -1,4 +1,4 @@
-from __init__ import db, app
+from __init__ import mysql, app
 from forms import BookForm, BookUpdateForm
 from flask import Blueprint, render_template, redirect, url_for, request
 import json
@@ -7,7 +7,7 @@ bksfbp = Blueprint('bksfbp',__name__,url_prefix='/books')
 
 @bksfbp.route('/')
 def show_all():
-   cs = db.connection.cursor()
+   cs = mysql.connection.cursor()
    cs.execute('''SELECT * FROM book''')
    result = json.dumps(cs.fetchall())
    cs.close()
@@ -19,10 +19,10 @@ def register():
     if errors:
         return errors, 500
     try:
-        cursor = db.connection.cursor()
+        cursor = mysql.connection.cursor()
         sql = """INSERT INTO book (bookName, bookStatus) VALUES (%s, %s)"""
         cursor.execute(sql, extract_form_data(request.form))
-        db.connection.commit()
+        mysql.connection.commit()
     except Exception as e:
         return str(e), 500
 
@@ -37,7 +37,7 @@ def validate_form_data(form):
             errors.append(f"{header} is empty")
     return errors
 def row_count():
-    cursor = db.connection.cursor()
+    cursor = mysql.connection.cursor()
     cursor.execute("SELECT COUNT(*) FROM book")
     count = cursor.fetchone()[0] # to get current ID
     return count + 1
@@ -54,10 +54,10 @@ def update(id):
     if errors:
         return errors, 500
     try:
-        cursor = db.connection.cursor()
+        cursor = mysql.connection.cursor()
         sql = """UPDATE book SET bookName=%s, bookStatus=%s WHERE bookId=%s"""
         cursor.execute(sql, extract_form_data(request.form) + [id])
-        db.connection.commit()
+        mysql.connection.commit()
     except Exception as e:
         return str(e), 500
 
@@ -66,11 +66,11 @@ def update(id):
 @bksfbp.route('/<int:id>/delete', methods=['POST'])
 def delete(id):
     try:
-        cursor = db.connection.cursor()
+        cursor = mysql.connection.cursor()
         sql = """DELETE FROM book WHERE bookId=%s"""
         cursor.execute(sql, [id])
-        db.connection.commit()
+        mysql.connection.commit()
     except Exception as e:
         return str(e), 500
-        
+
     return  "Success", 200

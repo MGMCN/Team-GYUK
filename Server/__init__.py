@@ -5,4 +5,4 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 app.config.from_object(Config)
 
-db = MySQL(app)
+mysql = MySQL(app)
