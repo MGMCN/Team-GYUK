@@ -3,9 +3,9 @@ from forms import BookForm, BookUpdateForm
 from flask import Blueprint, render_template, redirect, url_for, request
 import json
 
-bksfbp = Blueprint('bksfbp',__name__,url_prefix='/books')
+bksfbp = Blueprint('bksfbp',__name__) #,url_prefix='/books')
 
-@bksfbp.route('/')
+@bksfbp.route('/getbooklist')
 def show_all():
    cs = mysql.connection.cursor()
    cs.execute('''SELECT * FROM book''')
@@ -13,7 +13,7 @@ def show_all():
    cs.close()
    return result
 
-@bksfbp.route('/register', methods=['POST'])
+@bksfbp.route('/addbooks', methods=['POST'])
 def register():
     errors = validate_form_data(request.form)
     if errors:
@@ -63,14 +63,30 @@ def update(id):
 
     return  "Success", 200
 
+@bksfbp.route('/deletebooks', methods=['POST'])
+def delete():
+    if not request.form['bookId']:
+        return "bookId is empty", 500
+    try:
+        cursor = mysql.connection.cursor()
+        sql = """DELETE FROM book WHERE bookId=%s"""
+        cursor.execute(sql, [request.form['bookId']])
+        mysql.connection.commit()
+    except Exception as e:
+        return str(e), 500
+
+    return  "Success", 200
+
+"""
 @bksfbp.route('/<int:id>/delete', methods=['POST'])
 def delete(id):
     try:
         cursor = mysql.connection.cursor()
-        sql = """DELETE FROM book WHERE bookId=%s"""
+        # sql = DELETE FROM book WHERE bookId=%s
         cursor.execute(sql, [id])
         mysql.connection.commit()
     except Exception as e:
         return str(e), 500
 
     return  "Success", 200
+"""
