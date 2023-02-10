@@ -10,7 +10,7 @@ app.register_blueprint(bksfbp)
 
 
 #MySQL Connection
-app.config['MYSQL_HOST'] = 'mysql'
+app.config['MYSQL_HOST'] = '127.0.0.1'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '123456'
 app.config['MYSQL_DB'] = 'Serverdb'
