@@ -1,0 +1,27 @@
+name: Auto test tool for flask
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  docker:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Start containers
+      run: docker-compose -f "./Server/docker-compose.yml" up -d --build
+    
+    - name: Install python dependencies  
+      run: pip3 install pytest requests
+
+    - name: Run test
+      run: pytest
