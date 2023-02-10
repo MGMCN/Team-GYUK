@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  docker:
+  Auto_testing_for_our_server:
     timeout-minutes: 10
     runs-on: ubuntu-latest
 
