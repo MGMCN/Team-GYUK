@@ -10,6 +10,7 @@ services:
       FLASK_DEBUG: "true"
     depends_on:
       - mysql
+    restart: always
   mysql:
     restart: always
     image: mysql:5.7 # You should modify this when you are running docker on Arm cpu. (zhonghl003/mysql-server:5.7.34-37)
