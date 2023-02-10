@@ -15,6 +15,12 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
 
+
+@app.route('/test_demo')
+def test_demo():
+    return "Hello World!"
+
+
 @app.route('/')
 def hello_world():  # put application's code here
     try:
