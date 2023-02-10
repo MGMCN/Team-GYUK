@@ -7,13 +7,15 @@ First make sure you have Docker and Docker-Compose tools installed on your compu
 Server
 ├── Dockerfile
 ├── README.md
-├── __pycache__
 ├── app.py
-├── auth.py
-├── bksf.py
+├── .
+├── .
+├── .
 ├── docker-compose.yml
 └── requirements.txt
 ```
+If you just want to run a flask instance, please just run following [command](#run).
+# Build your own Docker-container
 ## Export the libraries
 Execute this command in this directory to export the libraries needed to run the flask project.
 ```Bash
@@ -60,7 +62,7 @@ services:
 volumes:
   mysql-data:
 ```
-## Run docker-compose!
+## <a name="run">Run docker-compose!</a>
 After executing this command you will see that your computer is successfully running a container with the flask service and mysql service inside
 ```Bash
 $ docker-compose up -d # <- run this
