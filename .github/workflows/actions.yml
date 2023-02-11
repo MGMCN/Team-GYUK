@@ -9,19 +9,34 @@ on:
       - main
 
 jobs:
-  Auto_testing_for_our_server:
+  test:
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+    services:
+      db:
+        image: mysql:5.7
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: 123456
+          MYSQL_DATABASE: Serverdb
+        options: >-
+          --name mysql
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Start containers
-      run: docker-compose -f "./Server/docker-compose.yml" up -d --build
+      uses: actions/checkout@v1
     
     - name: Install python dependencies  
       run: pip3 install pytest requests
 
+    - name: build flask
+      run: |
+        cd ./Server/
+        docker build -t flask .
+
+    - name: run flask and link with mysql
+      run: sudo docker run -p 8883:5000 -d --network $(docker network ls | grep github_network | awk '{print $2}') --name flask --link mysql:db flask
+    
     - name: Run test
       run: pytest
