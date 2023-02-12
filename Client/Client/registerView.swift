@@ -12,7 +12,7 @@ struct registerView: View {
 
     @State var signUpState = false
     @State var alertMessage = "Success ! 🚀"
-    
+
     @State var username: String = ""
     @State var password: String = ""
     @State var confirmPassword: String = ""
@@ -170,27 +170,26 @@ struct registerView: View {
                 handleSignUpButtonPressed()
             }
             .alert(isPresented: $signUpState) {
-                    Alert(
-                        title: Text("Register Information"),
-                        message: Text(alertMessage),
-                        dismissButton: .default(Text("OK")){
-                            if alertMessage == "Success ! 🚀"{
-                                presentationMode.wrappedValue.dismiss()
-                            }
+                Alert(
+                    title: Text("Register Information"),
+                    message: Text(alertMessage),
+                    dismissButton: .default(Text("OK")) {
+                        if alertMessage == "Success ! 🚀" {
+                            presentationMode.wrappedValue.dismiss()
                         }
-                    )
+                    }
+                )
             }
     }
 }
 
 extension registerView {
-    func handleSignUpButtonPressed(){
+    func handleSignUpButtonPressed() {
         // Read input text message and send to server.
-        
+
         // Change signUpState and messageFromServer alert message from server. (S/F)
         alertMessage = "Fail ! 😭"
         signUpState.toggle()
-        
     }
 }
 

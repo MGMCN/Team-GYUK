@@ -42,7 +42,7 @@ struct homeView: View {
 
                 Spacer()
                 Spacer()
-                
+
                 // Although deprecated but easy to use!
                 NavigationLink(destination: registerView(),
                                isActive: $signUpState) {
@@ -52,7 +52,7 @@ struct homeView: View {
                                isActive: $loginState) {
                     EmptyView()
                 }
-                
+
                 signUpButton
                 loginButton
             }
@@ -96,6 +96,7 @@ extension homeView {
     func handleSignUpButtonPressed() {
         signUpState.toggle()
     }
+
     func handleloginButtonPressed() {
         loginState.toggle()
     }

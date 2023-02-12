@@ -40,3 +40,19 @@ jobs:
     
     - name: Run test
       run: pytest
+
+  test_for_swift_format:
+    timeout-minutes: 10
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: install swiftformat
+      run: brew install swiftformat
+
+    - name: Run test
+      run: |
+        cd ./Client/Client
+        swiftformat . --lint --swiftversion "5.0"

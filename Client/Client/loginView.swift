@@ -9,14 +9,13 @@ import Foundation
 import SwiftUI
 
 struct loginView: View {
-    
     @Environment(\.presentationMode) var presentationMode
-    
+
     enum OnboardingField: Hashable {
         case email
         case password
     }
-    
+
     // make it static so other var can easily access
     @State var hide = false
     @State var loginState = false
@@ -111,15 +110,15 @@ struct loginView: View {
                 HStack {
                     Spacer()
                     // use logout dont use navigationview back button
-                    NavigationLink(destination: operationView(hide:self.$hide)
+                    NavigationLink(destination: operationView(hide: self.$hide)
                         .navigationBarBackButtonHidden(true),
-                                   isActive: $loginState) {
-                        EmptyView()
-                    }
+                        isActive: $loginState) {
+                            EmptyView()
+                        }
                     Button(
                         action: {
                             handleLoginButtonPressed()
-                            //if login success hide above navigationbar(back button) -> set hide = true
+                            // if login success hide above navigationbar(back button) -> set hide = true
                             self.hide = true
                         }) {
                             Image(systemName: "arrow.up.circle")
@@ -151,13 +150,13 @@ struct loginView: View {
                     .font(.title3)
             })
         )
-        
+
         navi.navigationBarHidden(self.hide)
     }
 }
 
 extension loginView {
-    func handleLoginButtonPressed(){
+    func handleLoginButtonPressed() {
         let usernameIsValid = !email.isEmpty
         let passwordIsValid = !password.isEmpty
         if usernameIsValid, passwordIsValid {
@@ -172,12 +171,11 @@ extension loginView {
             //                    passwordInFocus = false
         }
         // send email and pswd to server.
-        
+
         // if return success do loginState.toggle()
         loginState.toggle()
-        
+
         // if return fail show alert message
-        
     }
 }
 

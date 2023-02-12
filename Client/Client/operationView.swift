@@ -25,15 +25,14 @@ class EnvironmentViewModel: ObservableObject {
 }
 
 struct operationView: View {
-    
     @Binding var hide: Bool
-    
+
     @StateObject var viewModel: EnvironmentViewModel = .init()
 
     @Environment(\.presentationMode) var presentationMode
-    
+
     var body: some View {
-        VStack{
+        VStack {
             NavigationView {
                 VStack {
                     HStack {
@@ -44,9 +43,9 @@ struct operationView: View {
                             .foregroundColor(.white)
                             .font(.largeTitle)
                         Spacer()
-                        
+
                     }.padding()
-                    
+
                     ZStack {
                         Color.blue.edgesIgnoringSafeArea(.all)
                         List {
@@ -72,7 +71,6 @@ struct operationView: View {
                     .padding()
                     .scrollContentBackground(.hidden)
                     .background(.blue)
-                    
                 }
                 .background(.blue)
             }
@@ -89,7 +87,7 @@ struct operationView: View {
 //                            .font(.title3)
 //                    })
 //            )
-            
+
             Button(action: {
                 self.hide = false
                 self.presentationMode.wrappedValue.dismiss()
@@ -135,32 +133,32 @@ struct FinalView: View {
     @EnvironmentObject var viewModel: EnvironmentViewModel
 
     var body: some View {
-            ZStack {
-                // background
-                LinearGradient(
-                    gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)), Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1))]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea()
-                
-                // foreground
-                ScrollView {
-                    VStack(spacing: 20) {
-                        ForEach(viewModel.dataArray, id: \.self) { item in
-                            Text(item)
-                        }
+        ZStack {
+            // background
+            LinearGradient(
+                gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)), Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1))]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+
+            // foreground
+            ScrollView {
+                VStack(spacing: 20) {
+                    ForEach(viewModel.dataArray, id: \.self) { item in
+                        Text(item)
                     }
-                    .foregroundColor(.white)
-                    .font(.largeTitle)
                 }
+                .foregroundColor(.white)
+                .font(.largeTitle)
             }
+        }
     }
 }
 
 struct EnvironmentObjectBootcamp_Previews: PreviewProvider {
     @State static var hide = false // only for test
     static var previews: some View {
-        operationView(hide:$hide)
+        operationView(hide: $hide)
     }
 }
