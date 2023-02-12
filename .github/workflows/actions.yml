@@ -1,4 +1,4 @@
-name: Auto test tool for flask
+name: Auto test tool for flask and swift-format
 
 on:
   push:
