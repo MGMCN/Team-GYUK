@@ -111,7 +111,8 @@ struct loginView: View {
                 HStack {
                     Spacer()
                     // use logout dont use navigationview back button
-                    NavigationLink(destination: operationView(hide:self.$hide),
+                    NavigationLink(destination: operationView(hide:self.$hide)
+                        .navigationBarBackButtonHidden(true),
                                    isActive: $loginState) {
                         EmptyView()
                     }
