@@ -20,11 +20,11 @@ struct bookDisplayView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Spacer()
-                    Text("library").foregroundColor(.white).font(.largeTitle)
-                        .fontWeight(.bold)
                     Image(systemName: "books.vertical.fill")
                         .foregroundColor(.white)
                         .font(.largeTitle)
+                    Text("library").foregroundColor(.white).font(.largeTitle)
+                        .fontWeight(.bold)
                     Spacer()
                 }
                 VStack {
@@ -32,9 +32,9 @@ struct bookDisplayView: View {
                         Section(
                             header:
                             HStack {
-                                Text("Book Name").foregroundColor(.white)
                                 Image(systemName: "book.fill")
                                     .foregroundColor(.white)
+                                Text("Book Name").foregroundColor(.white)
                             }
                             .padding(.bottom)
                             .font(.headline)

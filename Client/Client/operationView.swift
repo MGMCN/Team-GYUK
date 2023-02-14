@@ -38,10 +38,10 @@ struct operationView: View {
             VStack {
                 VStack {
                     HStack {
-                        Text("Operation Menu")
+                        Image(systemName: "gearshape")
                             .foregroundColor(.white)
                             .font(.largeTitle)
-                        Image(systemName: "books.vertical.fill")
+                        Text("Operation Menu")
                             .foregroundColor(.white)
                             .font(.largeTitle)
                         Spacer()
