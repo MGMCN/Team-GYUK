@@ -12,7 +12,7 @@ import SwiftUI
 // StateObject
 // EnvironmentObject
 
-//class EnvironmentViewModel: ObservableObject {
+// class EnvironmentViewModel: ObservableObject {
 //    @Published var dataArray: [String] = []
 //
 //    init() {
@@ -22,7 +22,7 @@ import SwiftUI
 //    func getData() {
 //        dataArray.append(contentsOf: ["Add", "Delete", "Borrow", "Return"])
 //    }
-//}
+// }
 
 struct operationView: View {
     @Binding var hide: Bool
