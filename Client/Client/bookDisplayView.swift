@@ -9,14 +9,14 @@ import SwiftUI
 
 struct bookDisplayView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+
     @State var books: [String] = [
         "book1", "book2", "book3", "book4", "book5", "book6", "book7", "book8",
         "book9", "book10",
     ]
 
     var body: some View {
-        NavigationView{
+        NavigationView {
             VStack(alignment: .leading) {
                 HStack {
                     Spacer()
@@ -31,14 +31,14 @@ struct bookDisplayView: View {
                     List {
                         Section(
                             header:
-                                HStack {
-                                    Text("Book Name").foregroundColor(.white)
-                                    Image(systemName: "book.fill")
-                                        .foregroundColor(.white)
-                                }
-                                .padding(.bottom)
-                                .font(.headline)
-                                .foregroundColor(.white)
+                            HStack {
+                                Text("Book Name").foregroundColor(.white)
+                                Image(systemName: "book.fill")
+                                    .foregroundColor(.white)
+                            }
+                            .padding(.bottom)
+                            .font(.headline)
+                            .foregroundColor(.white)
                         ) {
                             ForEach(books, id: \.self) { book in
                                 HStack {

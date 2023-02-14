@@ -28,14 +28,14 @@ struct operationView: View {
     @Binding var hide: Bool
 
     @State var showBooksState = false
-    
+
     @StateObject var viewModel: EnvironmentViewModel = .init()
 
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         NavigationView {
-        VStack {
+            VStack {
                 VStack {
                     HStack {
                         Text("Operation Menu")
@@ -48,112 +48,104 @@ struct operationView: View {
 
                     }.padding()
 
-                    VStack{
-                        HStack{
+                    VStack {
+                        HStack {
                             Button(
-                                action: {
-                                    
-                                }) {
-                                    VStack(alignment: .leading,spacing: 0){
-                                        Image(systemName: "plus.circle")
-                                            .foregroundColor(.white)
-                                            .font(.title2)
-                                            .padding([.top, .trailing])
-                                        Text("Add bk")
-                                            .foregroundColor(.white)
-                                            .font(.title3)
+                                action: {})
+                            {
+                                VStack(alignment: .leading, spacing: 0) {
+                                    Image(systemName: "plus.circle")
+                                        .foregroundColor(.white)
+                                        .font(.title2)
+                                        .padding([.top, .trailing])
+                                    Text("Add bk")
+                                        .foregroundColor(.white)
+                                        .font(.title3)
 //                                            .fontWeight(.semibold)
-                                            .shadow(radius: 15)
-                                            .padding([.top, .bottom, .trailing])
-                                    }
-                                    
+                                        .shadow(radius: 15)
+                                        .padding([.top, .bottom, .trailing])
                                 }
-                                .frame(width: 100, height: 73)
-                                .buttonBorderShape(.capsule)
-                                .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
-                                .cornerRadius(10)
-                                .shadow(radius: 15)
-                                .padding(.vertical)
-                            
+                            }
+                            .frame(width: 100, height: 73)
+                            .buttonBorderShape(.capsule)
+                            .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
+                            .cornerRadius(10)
+                            .shadow(radius: 15)
+                            .padding(.vertical)
+
                             Button(
-                                action: {
-                                    
-                                }) {
-                                    VStack(alignment: .leading,spacing: 0){
-                                        Image(systemName: "trash.circle")
-                                            .foregroundColor(.white)
-                                            .font(.title2)
-                                            .padding([.top, .trailing])
-                                        Text("Delete")
-                                            .foregroundColor(.white)
-                                            .font(.title3)
-                                            .shadow(radius: 15)
-                                            .padding([.top, .bottom, .trailing])
-                                    }
-                                    
+                                action: {})
+                            {
+                                VStack(alignment: .leading, spacing: 0) {
+                                    Image(systemName: "trash.circle")
+                                        .foregroundColor(.white)
+                                        .font(.title2)
+                                        .padding([.top, .trailing])
+                                    Text("Delete")
+                                        .foregroundColor(.white)
+                                        .font(.title3)
+                                        .shadow(radius: 15)
+                                        .padding([.top, .bottom, .trailing])
                                 }
-                                .frame(width: 100, height: 73)
-                                .buttonBorderShape(.capsule)
-                                .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
-                                .cornerRadius(10)
-                                .shadow(radius: 15)
+                            }
+                            .frame(width: 100, height: 73)
+                            .buttonBorderShape(.capsule)
+                            .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
+                            .cornerRadius(10)
+                            .shadow(radius: 15)
 //                                .padding()
-                            
+
                             Button(
-                                action: {
-                                    
-                                }) {
-                                    VStack(alignment: .leading,spacing: 0){
-                                        Image(systemName: "qrcode.viewfinder")
-                                            .foregroundColor(.white)
-                                            .font(.title2)
-                                            .padding([.top, .trailing])
-                                        Text("Borrow")
-                                            .foregroundColor(.white)
-                                            .font(.title3)
-                                            .shadow(radius: 15)
-                                            .padding([.top, .bottom, .trailing])
-                                    }
-                                    
+                                action: {})
+                            {
+                                VStack(alignment: .leading, spacing: 0) {
+                                    Image(systemName: "qrcode.viewfinder")
+                                        .foregroundColor(.white)
+                                        .font(.title2)
+                                        .padding([.top, .trailing])
+                                    Text("Borrow")
+                                        .foregroundColor(.white)
+                                        .font(.title3)
+                                        .shadow(radius: 15)
+                                        .padding([.top, .bottom, .trailing])
                                 }
-                                .frame(width: 100, height: 73)
-                                .buttonBorderShape(.capsule)
-                                .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
-                                .cornerRadius(10)
-                                .shadow(radius: 15)
-                                .padding(.vertical)
+                            }
+                            .frame(width: 100, height: 73)
+                            .buttonBorderShape(.capsule)
+                            .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
+                            .cornerRadius(10)
+                            .shadow(radius: 15)
+                            .padding(.vertical)
                         }
                         .padding(.top)
-                        
-                        HStack{
+
+                        HStack {
                             Button(
-                                action: {
-                                    
-                                }) {
-                                    VStack(alignment: .leading,spacing: 0){
-                                        Image(systemName: "arrow.left.arrow.right.circle")
-                                            .foregroundColor(.white)
-                                            .font(.title2)
-                                            .padding([.top, .trailing])
-                                        Text("Return")
-                                            .foregroundColor(.white)
-                                            .font(.title3)
-                                            .shadow(radius: 15)
-                                            .padding([.top, .bottom, .trailing])
-                                    }
-                                    
+                                action: {})
+                            {
+                                VStack(alignment: .leading, spacing: 0) {
+                                    Image(systemName: "arrow.left.arrow.right.circle")
+                                        .foregroundColor(.white)
+                                        .font(.title2)
+                                        .padding([.top, .trailing])
+                                    Text("Return")
+                                        .foregroundColor(.white)
+                                        .font(.title3)
+                                        .shadow(radius: 15)
+                                        .padding([.top, .bottom, .trailing])
                                 }
-                                .frame(width: 100, height: 73)
-                                .buttonBorderShape(.capsule)
-                                .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
-                                .cornerRadius(10)
-                                .shadow(radius: 15)
-                            
+                            }
+                            .frame(width: 100, height: 73)
+                            .buttonBorderShape(.capsule)
+                            .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
+                            .cornerRadius(10)
+                            .shadow(radius: 15)
+
                             Button(
                                 action: {
                                     handleShowBooksButtonPressed()
                                 }) {
-                                    VStack(alignment: .leading,spacing: 0){
+                                    VStack(alignment: .leading, spacing: 0) {
                                         Image(systemName: "books.vertical.circle")
                                             .foregroundColor(.white)
                                             .font(.title2)
@@ -164,34 +156,32 @@ struct operationView: View {
                                             .shadow(radius: 15)
                                             .padding([.top, .bottom, .trailing])
                                     }
-                                    
                                 }
                                 .frame(width: 100, height: 73)
                                 .buttonBorderShape(.capsule)
                                 .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
                                 .cornerRadius(10)
                                 .shadow(radius: 15)
-                            
+
                             Button(
-                                action: {
-                                    
-                                }) {
-                                    EmptyView()
-                                }
-                                .frame(width: 100, height: 73)
+                                action: {})
+                            {
+                                EmptyView()
+                            }
+                            .frame(width: 100, height: 73)
 //                                .buttonBorderShape(.capsule)
 //                                .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
 //                                .cornerRadius(10)
 //                                .shadow(radius: 15)
                         }
-                        
+
                         NavigationLink(destination: bookDisplayView(),
                                        isActive: $showBooksState) {
                             EmptyView()
                         }
-                        
+
                         Spacer()
-                        
+
                         Button(action: {
                             self.hide = false
                             self.presentationMode.wrappedValue.dismiss()
@@ -203,7 +193,6 @@ struct operationView: View {
                                 .foregroundColor(.white)
                                 .font(.title2)
                         })
-                        
                     }
                     .frame(maxHeight: .infinity)
                 }
@@ -216,7 +205,7 @@ struct operationView: View {
 }
 
 extension operationView {
-    func handleShowBooksButtonPressed(){
+    func handleShowBooksButtonPressed() {
         showBooksState.toggle()
     }
 }
