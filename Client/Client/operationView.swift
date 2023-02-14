@@ -27,13 +27,15 @@ class EnvironmentViewModel: ObservableObject {
 struct operationView: View {
     @Binding var hide: Bool
 
+    @State var showBooksState = false
+    
     @StateObject var viewModel: EnvironmentViewModel = .init()
 
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
+        NavigationView {
         VStack {
-            NavigationView {
                 VStack {
                     HStack {
                         Text("Operation Menu")
@@ -46,118 +48,181 @@ struct operationView: View {
 
                     }.padding()
 
-                    ZStack {
-                        Color.blue.edgesIgnoringSafeArea(.all)
-                        List {
-                            ForEach(viewModel.dataArray, id: \.self) { item in
-                                HStack {
-                                    Image(systemName: "gear")
-                                        .foregroundColor(.blue)
-                                        .font(.title2)
-                                    NavigationLink(
-                                        destination: DetailView(selectedItem: item),
-                                        label: {
-                                            Text(item)
-                                        }
-                                    )
-                                    .padding(.vertical)
+                    VStack{
+                        HStack{
+                            Button(
+                                action: {
+                                    
+                                }) {
+                                    VStack(alignment: .leading,spacing: 0){
+                                        Image(systemName: "plus.circle")
+                                            .foregroundColor(.white)
+                                            .font(.title2)
+                                            .padding([.top, .trailing])
+                                        Text("Add bk")
+                                            .foregroundColor(.white)
+                                            .font(.title3)
+//                                            .fontWeight(.semibold)
+                                            .shadow(radius: 15)
+                                            .padding([.top, .bottom, .trailing])
+                                    }
+                                    
                                 }
-                            }
+                                .frame(width: 100, height: 73)
+                                .buttonBorderShape(.capsule)
+                                .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
+                                .cornerRadius(10)
+                                .shadow(radius: 15)
+                                .padding(.vertical)
+                            
+                            Button(
+                                action: {
+                                    
+                                }) {
+                                    VStack(alignment: .leading,spacing: 0){
+                                        Image(systemName: "trash.circle")
+                                            .foregroundColor(.white)
+                                            .font(.title2)
+                                            .padding([.top, .trailing])
+                                        Text("Delete")
+                                            .foregroundColor(.white)
+                                            .font(.title3)
+                                            .shadow(radius: 15)
+                                            .padding([.top, .bottom, .trailing])
+                                    }
+                                    
+                                }
+                                .frame(width: 100, height: 73)
+                                .buttonBorderShape(.capsule)
+                                .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
+                                .cornerRadius(10)
+                                .shadow(radius: 15)
+//                                .padding()
+                            
+                            Button(
+                                action: {
+                                    
+                                }) {
+                                    VStack(alignment: .leading,spacing: 0){
+                                        Image(systemName: "qrcode.viewfinder")
+                                            .foregroundColor(.white)
+                                            .font(.title2)
+                                            .padding([.top, .trailing])
+                                        Text("Borrow")
+                                            .foregroundColor(.white)
+                                            .font(.title3)
+                                            .shadow(radius: 15)
+                                            .padding([.top, .bottom, .trailing])
+                                    }
+                                    
+                                }
+                                .frame(width: 100, height: 73)
+                                .buttonBorderShape(.capsule)
+                                .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
+                                .cornerRadius(10)
+                                .shadow(radius: 15)
+                                .padding(.vertical)
                         }
-                        .fontWeight(.semibold)
-                        .shadow(radius: 15)
+                        .padding(.top)
+                        
+                        HStack{
+                            Button(
+                                action: {
+                                    
+                                }) {
+                                    VStack(alignment: .leading,spacing: 0){
+                                        Image(systemName: "arrow.left.arrow.right.circle")
+                                            .foregroundColor(.white)
+                                            .font(.title2)
+                                            .padding([.top, .trailing])
+                                        Text("Return")
+                                            .foregroundColor(.white)
+                                            .font(.title3)
+                                            .shadow(radius: 15)
+                                            .padding([.top, .bottom, .trailing])
+                                    }
+                                    
+                                }
+                                .frame(width: 100, height: 73)
+                                .buttonBorderShape(.capsule)
+                                .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
+                                .cornerRadius(10)
+                                .shadow(radius: 15)
+                            
+                            Button(
+                                action: {
+                                    handleShowBooksButtonPressed()
+                                }) {
+                                    VStack(alignment: .leading,spacing: 0){
+                                        Image(systemName: "books.vertical.circle")
+                                            .foregroundColor(.white)
+                                            .font(.title2)
+                                            .padding([.top, .trailing])
+                                        Text("Books")
+                                            .foregroundColor(.white)
+                                            .font(.title3)
+                                            .shadow(radius: 15)
+                                            .padding([.top, .bottom, .trailing])
+                                    }
+                                    
+                                }
+                                .frame(width: 100, height: 73)
+                                .buttonBorderShape(.capsule)
+                                .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
+                                .cornerRadius(10)
+                                .shadow(radius: 15)
+                            
+                            Button(
+                                action: {
+                                    
+                                }) {
+                                    EmptyView()
+                                }
+                                .frame(width: 100, height: 73)
+//                                .buttonBorderShape(.capsule)
+//                                .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
+//                                .cornerRadius(10)
+//                                .shadow(radius: 15)
+                        }
+                        
+                        NavigationLink(destination: bookDisplayView(),
+                                       isActive: $showBooksState) {
+                            EmptyView()
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            self.hide = false
+                            self.presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            Image(systemName: "door.right.hand.open")
+                                .foregroundColor(.white)
+                                .font(.largeTitle)
+                            Text("Sign out")
+                                .foregroundColor(.white)
+                                .font(.title2)
+                        })
+                        
                     }
-                    .cornerRadius(30)
-                    .padding()
-                    .scrollContentBackground(.hidden)
-                    .background(.blue)
+                    .frame(maxHeight: .infinity)
                 }
                 .background(.blue)
             }
             .environmentObject(viewModel)
-//            .navigationBarBackButtonHidden(true)
-//            .navigationBarItems(
-//                leading:
-//                    Button(action: {
-//                        self.hide = false
-//                        self.presentationMode.wrappedValue.dismiss()
-//                    }, label: {
-//                        Image(systemName: "arrow.backward.circle")
-//                            .foregroundColor(.white)
-//                            .font(.title3)
-//                    })
-//            )
-
-            Button(action: {
-                self.hide = false
-                self.presentationMode.wrappedValue.dismiss()
-            }, label: {
-                Image(systemName: "door.right.hand.open")
-                    .foregroundColor(.white)
-                    .font(.largeTitle)
-                Text("Sign out")
-                    .foregroundColor(.white)
-                    .font(.title2)
-            })
         }
         .background(.blue)
     }
 }
 
-struct DetailView: View {
-    let selectedItem: String
-
-    var body: some View {
-        ZStack {
-            // background
-            Color.orange.ignoresSafeArea()
-
-            // foreground
-            NavigationLink(
-                destination: FinalView(),
-                label: {
-                    Text(selectedItem)
-                        .font(.headline)
-                        .foregroundColor(.orange)
-                        .padding()
-                        .padding(.horizontal)
-                        .background(Color.blue)
-                        .cornerRadius(30)
-                }
-            )
-        }
+extension operationView {
+    func handleShowBooksButtonPressed(){
+        showBooksState.toggle()
     }
 }
 
-struct FinalView: View {
-    @EnvironmentObject var viewModel: EnvironmentViewModel
-
-    var body: some View {
-        ZStack {
-            // background
-            LinearGradient(
-                gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)), Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1))]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-
-            // foreground
-            ScrollView {
-                VStack(spacing: 20) {
-                    ForEach(viewModel.dataArray, id: \.self) { item in
-                        Text(item)
-                    }
-                }
-                .foregroundColor(.white)
-                .font(.largeTitle)
-            }
-        }
-    }
-}
-
-struct EnvironmentObjectBootcamp_Previews: PreviewProvider {
-    @State static var hide = false // only for test
+struct Previews_operationView_Previews: PreviewProvider {
+    @State static var hide = false
     static var previews: some View {
         operationView(hide: $hide)
     }
