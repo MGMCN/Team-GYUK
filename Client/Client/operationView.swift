@@ -12,24 +12,24 @@ import SwiftUI
 // StateObject
 // EnvironmentObject
 
-class EnvironmentViewModel: ObservableObject {
-    @Published var dataArray: [String] = []
-
-    init() {
-        getData()
-    }
-
-    func getData() {
-        dataArray.append(contentsOf: ["Add", "Delete", "Borrow", "Return"])
-    }
-}
+//class EnvironmentViewModel: ObservableObject {
+//    @Published var dataArray: [String] = []
+//
+//    init() {
+//        getData()
+//    }
+//
+//    func getData() {
+//        dataArray.append(contentsOf: ["Add", "Delete", "Borrow", "Return"])
+//    }
+//}
 
 struct operationView: View {
     @Binding var hide: Bool
 
     @State var showBooksState = false
 
-    @StateObject var viewModel: EnvironmentViewModel = .init()
+//    @StateObject var viewModel: EnvironmentViewModel = .init()
 
     @Environment(\.presentationMode) var presentationMode
 
@@ -198,7 +198,7 @@ struct operationView: View {
                 }
                 .background(.blue)
             }
-            .environmentObject(viewModel)
+//            .environmentObject(viewModel)
         }
         .background(.blue)
     }

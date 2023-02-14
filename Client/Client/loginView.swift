@@ -108,20 +108,20 @@ struct loginView: View {
 
                 // login button field
                 HStack {
-                    Spacer()
                     // use logout dont use navigationview back button
                     NavigationLink(destination: operationView(hide: self.$hide)
                         .navigationBarBackButtonHidden(true),
                         isActive: $loginState) {
                             EmptyView()
                         }
+                    Spacer()
                     Button(
                         action: {
                             handleLoginButtonPressed()
                             // if login success hide above navigationbar(back button) -> set hide = true
                             self.hide = true
                         }) {
-                            Image(systemName: "arrow.up.circle")
+                            Image(systemName: "arrow.up.and.person.rectangle.portrait")
                                 .foregroundColor(.white)
                                 .font(.title)
                             Text("Login Now")
