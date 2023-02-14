@@ -188,7 +188,7 @@ struct operationView: View {
                         }, label: {
                             Image(systemName: "door.right.hand.open")
                                 .foregroundColor(.white)
-                                .font(.largeTitle)
+                                .font(.title2)
                             Text("Sign out")
                                 .foregroundColor(.white)
                                 .font(.title2)
