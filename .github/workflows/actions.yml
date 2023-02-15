@@ -49,6 +49,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Build proj
+      run: |
+        cd ./Client
+        sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+        xcodebuild -project Client.xcodeproj -scheme Test
+
     - name: install swiftformat
       run: brew install swiftformat
 
