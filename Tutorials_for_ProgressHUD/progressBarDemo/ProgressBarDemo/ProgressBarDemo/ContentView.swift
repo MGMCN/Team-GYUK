@@ -10,9 +10,6 @@ import ProgressHUD
 
 struct ContentView: View {
     
-    @State var percent = 0.1
-    let plus = 0.1
-    
     var body: some View {
                 VStack {
                     Text("press me")
