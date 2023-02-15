@@ -1,5 +1,5 @@
 # Team-Gao-Yuan-Uriuriboo-KazukiSenda
-!!! Rename our team as Team-GYUK !!!
+!!! Rename our team name as Team-GYUK !!!
 ## Tasks for week two
 |name|contents|created by|
 |---|---|---|
