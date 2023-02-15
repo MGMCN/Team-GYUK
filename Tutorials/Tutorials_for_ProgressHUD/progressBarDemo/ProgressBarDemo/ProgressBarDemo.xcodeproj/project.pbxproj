@@ -7,81 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		040A9AC129826D87007E11F2 /* bookDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A9AC029826D87007E11F2 /* bookDisplayView.swift */; };
-		040A9AC529826DD4007E11F2 /* registerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A9AC429826DD4007E11F2 /* registerView.swift */; };
-		040A9AC729826DE6007E11F2 /* homeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A9AC629826DE6007E11F2 /* homeView.swift */; };
-		04891186298CECFD005E8445 /* operationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04891184298CECFD005E8445 /* operationView.swift */; };
-		04891187298CECFD005E8445 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04891185298CECFD005E8445 /* loginView.swift */; };
-		04E5C1CD298229DE004CE174 /* ClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E5C1CC298229DE004CE174 /* ClientApp.swift */; };
-		04E5C1CF298229DE004CE174 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E5C1CE298229DE004CE174 /* ContentView.swift */; };
-		04E5C1D1298229DF004CE174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E5C1D0298229DF004CE174 /* Assets.xcassets */; };
-		04E5C1D4298229DF004CE174 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E5C1D3298229DF004CE174 /* Preview Assets.xcassets */; };
-		04EB2E3D299CBC2200D04A35 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 04EB2E3C299CBC2200D04A35 /* ProgressHUD */; };
-		04EB2E40299CBCA000D04A35 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 04EB2E3F299CBCA000D04A35 /* Alamofire */; };
+		04EB2E2B299CB03100D04A35 /* ProgressBarDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB2E2A299CB03100D04A35 /* ProgressBarDemoApp.swift */; };
+		04EB2E2D299CB03100D04A35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB2E2C299CB03100D04A35 /* ContentView.swift */; };
+		04EB2E2F299CB03200D04A35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EB2E2E299CB03200D04A35 /* Assets.xcassets */; };
+		04EB2E32299CB03200D04A35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EB2E31299CB03200D04A35 /* Preview Assets.xcassets */; };
+		04EB2E3A299CB2FE00D04A35 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 04EB2E39299CB2FE00D04A35 /* ProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		040A9AC029826D87007E11F2 /* bookDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookDisplayView.swift; sourceTree = "<group>"; };
-		040A9AC429826DD4007E11F2 /* registerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerView.swift; sourceTree = "<group>"; };
-		040A9AC629826DE6007E11F2 /* homeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeView.swift; sourceTree = "<group>"; };
-		04891184298CECFD005E8445 /* operationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = operationView.swift; sourceTree = "<group>"; };
-		04891185298CECFD005E8445 /* loginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
-		04E5C1C9298229DE004CE174 /* Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04E5C1CC298229DE004CE174 /* ClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientApp.swift; sourceTree = "<group>"; };
-		04E5C1CE298229DE004CE174 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		04E5C1D0298229DF004CE174 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04E5C1D3298229DF004CE174 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		04EB2E27299CB03100D04A35 /* ProgressBarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgressBarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04EB2E2A299CB03100D04A35 /* ProgressBarDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarDemoApp.swift; sourceTree = "<group>"; };
+		04EB2E2C299CB03100D04A35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		04EB2E2E299CB03200D04A35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04EB2E31299CB03200D04A35 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		04E5C1C6298229DE004CE174 /* Frameworks */ = {
+		04EB2E24299CB03100D04A35 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04EB2E3D299CBC2200D04A35 /* ProgressHUD in Frameworks */,
-				04EB2E40299CBCA000D04A35 /* Alamofire in Frameworks */,
+				04EB2E3A299CB2FE00D04A35 /* ProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04E5C1C0298229DE004CE174 = {
+		04EB2E1E299CB03100D04A35 = {
 			isa = PBXGroup;
 			children = (
-				04E5C1CB298229DE004CE174 /* Client */,
-				04E5C1CA298229DE004CE174 /* Products */,
+				04EB2E29299CB03100D04A35 /* ProgressBarDemo */,
+				04EB2E28299CB03100D04A35 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		04E5C1CA298229DE004CE174 /* Products */ = {
+		04EB2E28299CB03100D04A35 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04E5C1C9298229DE004CE174 /* Client.app */,
+				04EB2E27299CB03100D04A35 /* ProgressBarDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		04E5C1CB298229DE004CE174 /* Client */ = {
+		04EB2E29299CB03100D04A35 /* ProgressBarDemo */ = {
 			isa = PBXGroup;
 			children = (
-				04891185298CECFD005E8445 /* loginView.swift */,
-				04891184298CECFD005E8445 /* operationView.swift */,
-				04E5C1CC298229DE004CE174 /* ClientApp.swift */,
-				04E5C1CE298229DE004CE174 /* ContentView.swift */,
-				04E5C1D0298229DF004CE174 /* Assets.xcassets */,
-				04E5C1D2298229DF004CE174 /* Preview Content */,
-				040A9AC029826D87007E11F2 /* bookDisplayView.swift */,
-				040A9AC429826DD4007E11F2 /* registerView.swift */,
-				040A9AC629826DE6007E11F2 /* homeView.swift */,
+				04EB2E2A299CB03100D04A35 /* ProgressBarDemoApp.swift */,
+				04EB2E2C299CB03100D04A35 /* ContentView.swift */,
+				04EB2E2E299CB03200D04A35 /* Assets.xcassets */,
+				04EB2E30299CB03200D04A35 /* Preview Content */,
 			);
-			path = Client;
+			path = ProgressBarDemo;
 			sourceTree = "<group>";
 		};
-		04E5C1D2298229DF004CE174 /* Preview Content */ = {
+		04EB2E30299CB03200D04A35 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				04E5C1D3298229DF004CE174 /* Preview Assets.xcassets */,
+				04EB2E31299CB03200D04A35 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -89,43 +72,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		04E5C1C8298229DE004CE174 /* Client */ = {
+		04EB2E26299CB03100D04A35 /* ProgressBarDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04E5C1D7298229DF004CE174 /* Build configuration list for PBXNativeTarget "Client" */;
+			buildConfigurationList = 04EB2E35299CB03200D04A35 /* Build configuration list for PBXNativeTarget "ProgressBarDemo" */;
 			buildPhases = (
-				04E5C1C5298229DE004CE174 /* Sources */,
-				04E5C1C6298229DE004CE174 /* Frameworks */,
-				04E5C1C7298229DE004CE174 /* Resources */,
+				04EB2E23299CB03100D04A35 /* Sources */,
+				04EB2E24299CB03100D04A35 /* Frameworks */,
+				04EB2E25299CB03100D04A35 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Client;
+			name = ProgressBarDemo;
 			packageProductDependencies = (
-				04EB2E3C299CBC2200D04A35 /* ProgressHUD */,
-				04EB2E3F299CBCA000D04A35 /* Alamofire */,
+				04EB2E39299CB2FE00D04A35 /* ProgressHUD */,
 			);
-			productName = Client;
-			productReference = 04E5C1C9298229DE004CE174 /* Client.app */;
+			productName = ProgressBarDemo;
+			productReference = 04EB2E27299CB03100D04A35 /* ProgressBarDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		04E5C1C1298229DE004CE174 /* Project object */ = {
+		04EB2E1F299CB03100D04A35 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
-					04E5C1C8298229DE004CE174 = {
+					04EB2E26299CB03100D04A35 = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
-			buildConfigurationList = 04E5C1C4298229DE004CE174 /* Build configuration list for PBXProject "Client" */;
+			buildConfigurationList = 04EB2E22299CB03100D04A35 /* Build configuration list for PBXProject "ProgressBarDemo" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -133,51 +115,45 @@
 				en,
 				Base,
 			);
-			mainGroup = 04E5C1C0298229DE004CE174;
+			mainGroup = 04EB2E1E299CB03100D04A35;
 			packageReferences = (
-				04EB2E3B299CBC2200D04A35 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
-				04EB2E3E299CBCA000D04A35 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				04EB2E38299CB2FE00D04A35 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 			);
-			productRefGroup = 04E5C1CA298229DE004CE174 /* Products */;
+			productRefGroup = 04EB2E28299CB03100D04A35 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				04E5C1C8298229DE004CE174 /* Client */,
+				04EB2E26299CB03100D04A35 /* ProgressBarDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		04E5C1C7298229DE004CE174 /* Resources */ = {
+		04EB2E25299CB03100D04A35 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04E5C1D4298229DF004CE174 /* Preview Assets.xcassets in Resources */,
-				04E5C1D1298229DF004CE174 /* Assets.xcassets in Resources */,
+				04EB2E32299CB03200D04A35 /* Preview Assets.xcassets in Resources */,
+				04EB2E2F299CB03200D04A35 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		04E5C1C5298229DE004CE174 /* Sources */ = {
+		04EB2E23299CB03100D04A35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04E5C1CF298229DE004CE174 /* ContentView.swift in Sources */,
-				040A9AC529826DD4007E11F2 /* registerView.swift in Sources */,
-				04891187298CECFD005E8445 /* loginView.swift in Sources */,
-				04E5C1CD298229DE004CE174 /* ClientApp.swift in Sources */,
-				040A9AC729826DE6007E11F2 /* homeView.swift in Sources */,
-				04891186298CECFD005E8445 /* operationView.swift in Sources */,
-				040A9AC129826D87007E11F2 /* bookDisplayView.swift in Sources */,
+				04EB2E2D299CB03100D04A35 /* ContentView.swift in Sources */,
+				04EB2E2B299CB03100D04A35 /* ProgressBarDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		04E5C1D5298229DF004CE174 /* Debug */ = {
+		04EB2E33299CB03200D04A35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -237,7 +213,7 @@
 			};
 			name = Debug;
 		};
-		04E5C1D6298229DF004CE174 /* Release */ = {
+		04EB2E34299CB03200D04A35 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -291,14 +267,14 @@
 			};
 			name = Release;
 		};
-		04E5C1D8298229DF004CE174 /* Debug */ = {
+		04EB2E36299CB03200D04A35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Client/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ProgressBarDemo/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -311,7 +287,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = godmt.Client;
+				PRODUCT_BUNDLE_IDENTIFIER = godmt.ProgressBarDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -319,14 +295,14 @@
 			};
 			name = Debug;
 		};
-		04E5C1D9298229DF004CE174 /* Release */ = {
+		04EB2E37299CB03200D04A35 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Client/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ProgressBarDemo/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -339,7 +315,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = godmt.Client;
+				PRODUCT_BUNDLE_IDENTIFIER = godmt.ProgressBarDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -350,20 +326,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		04E5C1C4298229DE004CE174 /* Build configuration list for PBXProject "Client" */ = {
+		04EB2E22299CB03100D04A35 /* Build configuration list for PBXProject "ProgressBarDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				04E5C1D5298229DF004CE174 /* Debug */,
-				04E5C1D6298229DF004CE174 /* Release */,
+				04EB2E33299CB03200D04A35 /* Debug */,
+				04EB2E34299CB03200D04A35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04E5C1D7298229DF004CE174 /* Build configuration list for PBXNativeTarget "Client" */ = {
+		04EB2E35299CB03200D04A35 /* Build configuration list for PBXNativeTarget "ProgressBarDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				04E5C1D8298229DF004CE174 /* Debug */,
-				04E5C1D9298229DF004CE174 /* Release */,
+				04EB2E36299CB03200D04A35 /* Debug */,
+				04EB2E37299CB03200D04A35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -371,36 +347,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		04EB2E3B299CBC2200D04A35 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+		04EB2E38299CB2FE00D04A35 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/relatedcode/ProgressHUD.git";
 			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		04EB2E3E299CBCA000D04A35 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 13.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		04EB2E3C299CBC2200D04A35 /* ProgressHUD */ = {
+		04EB2E39299CB2FE00D04A35 /* ProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 04EB2E3B299CBC2200D04A35 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			package = 04EB2E38299CB2FE00D04A35 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
 			productName = ProgressHUD;
-		};
-		04EB2E3F299CBCA000D04A35 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04EB2E3E299CBCA000D04A35 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 04E5C1C1298229DE004CE174 /* Project object */;
+	rootObject = 04EB2E1F299CB03100D04A35 /* Project object */;
 }
