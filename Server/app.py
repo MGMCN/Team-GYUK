@@ -37,18 +37,19 @@ def hello_world():  # put application's code here
             ''')
         cur.execute(''' CREATE TABLE `book` (
             `bookName` varchar(255) NOT NULL,
-            `bookId` int(255) NOT NULL,
+            `bookId` int(255) NOT NULL AUTO_INCREMENT,
             `bookStatus` varchar(255) NOT NULL,
             PRIMARY KEY (`bookId`),
             UNIQUE KEY `unique_bookId` (`bookId`)
             );
             ''')
         cur.execute(''' CREATE TABLE `borrowStatus` (
-            `borrowId` int(255) NOT NULL,
+            `borrowId` int(255) NOT NULL AUTO_INCREMENT,
             `userId` int(255) NOT NULL,
             `bookId` int(255) NOT NULL,
             PRIMARY KEY (`borrowId`),
             UNIQUE KEY `unique_borrowId` (`borrowId`),
+            UNIQUE KEY `unique_bookId` (`bookId`),
             KEY `lnk_user_borrowStatus` (`userId`),
             KEY `lnk_book_borrowStatus` (`bookId`),
             CONSTRAINT `lnk_book_borrowStatus` FOREIGN KEY (`bookId`) REFERENCES `book` (`bookId`) ON DELETE CASCADE ON UPDATE CASCADE,
