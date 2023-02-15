@@ -53,7 +53,7 @@ jobs:
       run: |
         cd ./Client
         sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
-        xcodebuild -project Client.xcodeproj -scheme Test
+        xcodebuild -project Client.xcodeproj -scheme Client
 
     - name: install swiftformat
       run: brew install swiftformat
