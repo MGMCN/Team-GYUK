@@ -177,7 +177,6 @@ extension loginView {
         ProgressHUD.colorHUD = .lightGray
         ProgressHUD.showSucceed("Success !", delay: 0.75)
         loginState.toggle()
-
         // if return fail show alert message
     }
 }
