@@ -5,13 +5,14 @@
 //  Created by 高山 on 2023/1/26.
 //
 
+import ProgressHUD
 import SwiftUI
 
 struct registerView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @State var signUpState = false
-    @State var alertMessage = "Success ! 🚀"
+    @State var alertMessage = "Success !"
 
     @State var username: String = ""
     @State var password: String = ""
@@ -174,9 +175,9 @@ struct registerView: View {
                     title: Text("Register Information"),
                     message: Text(alertMessage),
                     dismissButton: .default(Text("OK")) {
-                        if alertMessage == "Success ! 🚀" {
-                            presentationMode.wrappedValue.dismiss()
-                        }
+//                        if alertMessage == "Success !" {
+//                            presentationMode.wrappedValue.dismiss()
+//                        }
                     }
                 )
             }
@@ -188,8 +189,19 @@ extension registerView {
         // Read input text message and send to server.
 
         // Change signUpState and messageFromServer alert message from server. (S/F)
-        alertMessage = "Fail ! 😭"
-        signUpState.toggle()
+
+        // Success signUpState not do toggle()
+        alertMessage = "Success !"
+        // Fail
+        alertMessage = "Fail !"
+
+        if alertMessage == "Success !" {
+            ProgressHUD.colorHUD = .lightGray
+            ProgressHUD.showSucceed(alertMessage, delay: 0.75)
+            presentationMode.wrappedValue.dismiss()
+        } else {
+            signUpState.toggle()
+        }
     }
 }
 

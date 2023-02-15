@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ProgressHUD
 import SwiftUI
 
 struct loginView: View {
@@ -173,6 +174,8 @@ extension loginView {
         // send email and pswd to server.
 
         // if return success do loginState.toggle()
+        ProgressHUD.colorHUD = .lightGray
+        ProgressHUD.showSucceed("Success !", delay: 0.75)
         loginState.toggle()
 
         // if return fail show alert message
