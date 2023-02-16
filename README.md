@@ -2,11 +2,11 @@
 Using the app developed by us, you can borrow and return books by scanning the QR code. At the same time, this app realizes a simple registration and login function. This app also implements administrator privileges and normal user privileges. When you are logged in as an administrator, you can add books to the library or delete books.
 ## Framework & Maintenance technologies & programming languages we use
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Swift](https://img.shields.io/badge/swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white)
 ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![Swift](https://img.shields.io/badge/swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white)
 ## Server
 The server is written based on the flask framework. It implements communication with the front-end app and communication with the back-end database. The database is using the docker image of mysql. We also packaged the mysql database and the flask-based server into a docker container. It can be started directly using the docker-compose command.
 ## Client
