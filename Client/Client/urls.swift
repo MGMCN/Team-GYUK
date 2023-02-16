@@ -8,6 +8,6 @@
 import Foundation
 
 class urls {
-    static var register_url: String="https://127.0.0.1:8883/register"
+    static var register_url: String = "https://127.0.0.1:8883/register"
     init() {}
 }

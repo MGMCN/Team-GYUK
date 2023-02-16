@@ -5,8 +5,8 @@
 //  Created by 高山 on 2023/1/26.
 //
 
-import ProgressHUD
 import Alamofire
+import ProgressHUD
 import SwiftUI
 
 struct registerView: View {
@@ -175,16 +175,14 @@ struct registerView: View {
                 Alert(
                     title: Text("Register Information"),
                     message: Text(alertMessage),
-                    dismissButton: .default(Text("OK")) {
-                    }
+                    dismissButton: .default(Text("OK")) {}
                 )
             }
     }
 }
 
 extension registerView {
-    
-    func loginSuccessOrNot(){
+    func loginSuccessOrNot() {
         // Change signUpState and messageFromServer alert message from server. (S/F)
 
         // Success! signUpState not do toggle()
@@ -200,11 +198,11 @@ extension registerView {
             signUpState.toggle()
         }
     }
-    
+
     func handleSignUpButtonPressed() {
         // Read input text message and send to server.
-        let parameters = ["name": username,"email": email, "password":password, "authorityType":"1"]
-        AF.request(urls.register_url, method: .post, parameters: parameters).responseJSON { response in
+        let parameters = ["name": username, "email": email, "password": password, "authorityType": "1"]
+        AF.request(urls.register_url, method: .post, parameters: parameters).responseJSON { _ in
 //            switch response.result {
 //                                case .success(let value as [String: Any]):
 //                                    debugPrint("success: \(String(describing: value["code"]))")
