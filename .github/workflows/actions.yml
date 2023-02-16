@@ -1,4 +1,4 @@
-name: Auto test tool for flask
+name: Auto test tool for flask and swift-format
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  test:
+  test_for_flask:
     timeout-minutes: 10
     runs-on: ubuntu-20.04
     services:
@@ -40,3 +40,25 @@ jobs:
     
     - name: Run test
       run: pytest
+
+  test_for_swift_format:
+    timeout-minutes: 10
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+#     - name: Build proj
+#       run: |
+#         cd ./Client
+#         sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+#         xcodebuild -project Client.xcodeproj -scheme Client
+
+    - name: install swiftformat
+      run: brew install swiftformat
+
+    - name: Run test
+      run: |
+        cd ./Client/Client
+        swiftformat . --lint --swiftversion "5.0"
