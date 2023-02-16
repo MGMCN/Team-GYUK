@@ -6,6 +6,7 @@
 //
 
 import ProgressHUD
+import Alamofire
 import SwiftUI
 
 struct registerView: View {
@@ -175,9 +176,6 @@ struct registerView: View {
                     title: Text("Register Information"),
                     message: Text(alertMessage),
                     dismissButton: .default(Text("OK")) {
-//                        if alertMessage == "Success !" {
-//                            presentationMode.wrappedValue.dismiss()
-//                        }
                     }
                 )
             }
@@ -185,14 +183,13 @@ struct registerView: View {
 }
 
 extension registerView {
-    func handleSignUpButtonPressed() {
-        // Read input text message and send to server.
-
+    
+    func loginSuccessOrNot(){
         // Change signUpState and messageFromServer alert message from server. (S/F)
 
-        // Success signUpState not do toggle()
+        // Success! signUpState not do toggle()
         alertMessage = "Success !"
-        // Fail
+        // Fail! signUpState do toggle()
         alertMessage = "Fail !"
 
         if alertMessage == "Success !" {
@@ -201,6 +198,23 @@ extension registerView {
             presentationMode.wrappedValue.dismiss()
         } else {
             signUpState.toggle()
+        }
+    }
+    
+    func handleSignUpButtonPressed() {
+        // Read input text message and send to server.
+        let parameters = ["name": username,"email": email, "password":password, "authorityType":"1"]
+        AF.request(urls.register_url, method: .post, parameters: parameters).responseJSON { response in
+//            switch response.result {
+//                                case .success(let value as [String: Any]):
+//                                    debugPrint("success: \(String(describing: value["code"]))")
+//                                    let code = value["code"]
+//                                    alertMessage = code as! String
+//                                case .failure(let error):
+//                                    debugPrint("Failure: \(error)")
+//                                default: fatalError("Fatal error.")
+//                            }
+            loginSuccessOrNot() // binding with this function
         }
     }
 }
