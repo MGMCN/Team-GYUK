@@ -5,18 +5,17 @@
 //  Created by yamaoka on 2023/02/09.
 //
 
-import Foundation
-import UIKit
 import AVFoundation
+import Foundation
 import SwiftUI
+import UIKit
 
-struct CameraView:UIViewControllerRepresentable{
-    func makeUIViewController(context: Context) -> some UIImagePickerController {
+struct CameraView: UIViewControllerRepresentable {
+    func makeUIViewController(context _: Context) -> some UIImagePickerController {
         let controller = UIImagePickerController()
         controller.sourceType = .camera
-        return controller;
+        return controller
     }
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        
-    }
+
+    func updateUIViewController(_: UIViewControllerType, context _: Context) {}
 }

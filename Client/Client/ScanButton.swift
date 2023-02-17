@@ -10,13 +10,13 @@ import SwiftUI
 
 struct ScanButtonView: View {
     @State var showingCamera = false
-    //本を追加、削除、借りる、返すの状態を保持
+    // 本を追加、削除、借りる、返すの状態を保持
     @State var operation = ""
-    
+
     var body: some View {
-        Button(action:{
+        Button(action: {
             showingCamera = true
-        }){
+        }) {
             Text("カメラを起動する")
         }
         .sheet(isPresented: $showingCamera, content: {
@@ -24,7 +24,8 @@ struct ScanButtonView: View {
         })
     }
 }
-//テスト用手入力のビュー
+
+// テスト用手入力のビュー
 struct TextView: View {
     @State private var name = ""
     var body: some View {
@@ -32,6 +33,7 @@ struct TextView: View {
             .padding()
     }
 }
+
 struct ScanButtonView_Previews: PreviewProvider {
     static var previews: some View {
 //        TextView()
