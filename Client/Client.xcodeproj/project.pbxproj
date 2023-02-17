@@ -79,6 +79,8 @@
 				04891184298CECFD005E8445 /* operationView.swift */,
 				04E5C1CC298229DE004CE174 /* ClientApp.swift */,
 				04E5C1CE298229DE004CE174 /* ContentView.swift */,
+				DCA5AD272994D65200A85E66 /* ScanButton.swift */,
+				DCA5AD242994C6F200A85E66 /* Scan.swift */,
 				04E5C1D0298229DF004CE174 /* Assets.xcassets */,
 				04E5C1D2298229DF004CE174 /* Preview Content */,
 				040A9AC029826D87007E11F2 /* bookDisplayView.swift */,
@@ -181,7 +183,9 @@
 			files = (
 				4468807E299E6BDC0078244A /* urls.swift in Sources */,
 				04E5C1CF298229DE004CE174 /* ContentView.swift in Sources */,
+				DCA5AD282994D65200A85E66 /* ScanButton.swift in Sources */,
 				040A9AC529826DD4007E11F2 /* registerView.swift in Sources */,
+				DCA5AD252994C6F200A85E66 /* Scan.swift in Sources */,
 				04891187298CECFD005E8445 /* loginView.swift in Sources */,
 				04E5C1CD298229DE004CE174 /* ClientApp.swift in Sources */,
 				44C2555A299FB54100A58498 /* qrCodeScanView.swift in Sources */,
