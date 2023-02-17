@@ -1,0 +1,64 @@
+name: Auto test tool for flask and swift-format
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  test_for_flask:
+    timeout-minutes: 10
+    runs-on: ubuntu-20.04
+    services:
+      db:
+        image: mysql:5.7
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: 123456
+          MYSQL_DATABASE: Serverdb
+        options: >-
+          --name mysql
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    
+    - name: Install python dependencies  
+      run: pip3 install pytest requests
+
+    - name: build flask
+      run: |
+        cd ./Server/
+        docker build -t flask .
+
+    - name: run flask and link with mysql
+      run: sudo docker run -p 8883:5000 -d --network $(docker network ls | grep github_network | awk '{print $2}') --name flask --link mysql:db flask
+    
+    - name: Run test
+      run: pytest
+
+  test_for_swift_format:
+    timeout-minutes: 10
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+#     - name: Build proj
+#       run: |
+#         cd ./Client
+#         sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+#         xcodebuild -project Client.xcodeproj -scheme Client
+
+    - name: install swiftformat
+      run: brew install swiftformat
+
+    - name: Run test
+      run: |
+        cd ./Client/Client
+        swiftformat . --lint --swiftversion "5.0"

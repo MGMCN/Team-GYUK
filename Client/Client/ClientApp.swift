@@ -11,6 +11,7 @@ import SwiftUI
 struct ClientApp: App {
     var body: some Scene {
         WindowGroup {
+//            qrCodeScanView()
             homeView()
         }
     }

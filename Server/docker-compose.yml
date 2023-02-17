@@ -1,6 +1,7 @@
 version: "3"
 services:
   server:
+    restart: always
     build: .
     ports:
       - "8883:5000"
@@ -12,7 +13,7 @@ services:
       - mysql
   mysql:
     restart: always
-    image: zhonghl003/mysql-server:5.7.34-37 # you should modify this (mysql:5.7)
+    image: mysql:5.7 # You should modify this when you are running docker on Arm cpu. (zhonghl003/mysql-server:5.7.34-37)
     container_name: mysql
     ports:
       - "3306:3306"

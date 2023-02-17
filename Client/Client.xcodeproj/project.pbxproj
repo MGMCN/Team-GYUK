@@ -16,8 +16,12 @@
 		04E5C1CF298229DE004CE174 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E5C1CE298229DE004CE174 /* ContentView.swift */; };
 		04E5C1D1298229DF004CE174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E5C1D0298229DF004CE174 /* Assets.xcassets */; };
 		04E5C1D4298229DF004CE174 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E5C1D3298229DF004CE174 /* Preview Assets.xcassets */; };
-		DCA5AD252994C6F200A85E66 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA5AD242994C6F200A85E66 /* Scan.swift */; };
-		DCA5AD282994D65200A85E66 /* ScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA5AD272994D65200A85E66 /* ScanButton.swift */; };
+		04EB2E3D299CBC2200D04A35 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 04EB2E3C299CBC2200D04A35 /* ProgressHUD */; };
+		04EB2E40299CBCA000D04A35 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 04EB2E3F299CBCA000D04A35 /* Alamofire */; };
+		444ED98A299D1D0C00601475 /* account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444ED989299D1D0C00601475 /* account.swift */; };
+		4468807E299E6BDC0078244A /* urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4468807D299E6BDC0078244A /* urls.swift */; };
+		44C25558299FB4EC00A58498 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 44C25557299FB4EC00A58498 /* CodeScanner */; };
+		44C2555A299FB54100A58498 /* qrCodeScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C25559299FB54100A58498 /* qrCodeScanView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +35,10 @@
 		04E5C1CE298229DE004CE174 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		04E5C1D0298229DF004CE174 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04E5C1D3298229DF004CE174 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		DCA5AD242994C6F200A85E66 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
-		DCA5AD262994D5D700A85E66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		DCA5AD272994D65200A85E66 /* ScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanButton.swift; sourceTree = "<group>"; };
+		444ED989299D1D0C00601475 /* account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = account.swift; sourceTree = "<group>"; };
+		4468807D299E6BDC0078244A /* urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = urls.swift; sourceTree = "<group>"; };
+		44C25559299FB54100A58498 /* qrCodeScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCodeScanView.swift; sourceTree = "<group>"; };
+		44C2555B299FBC3E00A58498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EB2E3D299CBC2200D04A35 /* ProgressHUD in Frameworks */,
+				04EB2E40299CBCA000D04A35 /* Alamofire in Frameworks */,
+				44C25558299FB4EC00A58498 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,7 +74,7 @@
 		04E5C1CB298229DE004CE174 /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				DCA5AD262994D5D700A85E66 /* Info.plist */,
+				44C2555B299FBC3E00A58498 /* Info.plist */,
 				04891185298CECFD005E8445 /* loginView.swift */,
 				04891184298CECFD005E8445 /* operationView.swift */,
 				04E5C1CC298229DE004CE174 /* ClientApp.swift */,
@@ -78,6 +86,9 @@
 				040A9AC029826D87007E11F2 /* bookDisplayView.swift */,
 				040A9AC429826DD4007E11F2 /* registerView.swift */,
 				040A9AC629826DE6007E11F2 /* homeView.swift */,
+				444ED989299D1D0C00601475 /* account.swift */,
+				4468807D299E6BDC0078244A /* urls.swift */,
+				44C25559299FB54100A58498 /* qrCodeScanView.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -106,6 +117,11 @@
 			dependencies = (
 			);
 			name = Client;
+			packageProductDependencies = (
+				04EB2E3C299CBC2200D04A35 /* ProgressHUD */,
+				04EB2E3F299CBCA000D04A35 /* Alamofire */,
+				44C25557299FB4EC00A58498 /* CodeScanner */,
+			);
 			productName = Client;
 			productReference = 04E5C1C9298229DE004CE174 /* Client.app */;
 			productType = "com.apple.product-type.application";
@@ -134,6 +150,11 @@
 				Base,
 			);
 			mainGroup = 04E5C1C0298229DE004CE174;
+			packageReferences = (
+				04EB2E3B299CBC2200D04A35 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				04EB2E3E299CBCA000D04A35 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				44C25556299FB4EC00A58498 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 04E5C1CA298229DE004CE174 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -160,13 +181,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4468807E299E6BDC0078244A /* urls.swift in Sources */,
 				04E5C1CF298229DE004CE174 /* ContentView.swift in Sources */,
 				DCA5AD282994D65200A85E66 /* ScanButton.swift in Sources */,
 				040A9AC529826DD4007E11F2 /* registerView.swift in Sources */,
 				DCA5AD252994C6F200A85E66 /* Scan.swift in Sources */,
 				04891187298CECFD005E8445 /* loginView.swift in Sources */,
 				04E5C1CD298229DE004CE174 /* ClientApp.swift in Sources */,
+				44C2555A299FB54100A58498 /* qrCodeScanView.swift in Sources */,
 				040A9AC729826DE6007E11F2 /* homeView.swift in Sources */,
+				444ED98A299D1D0C00601475 /* account.swift in Sources */,
 				04891186298CECFD005E8445 /* operationView.swift in Sources */,
 				040A9AC129826D87007E11F2 /* bookDisplayView.swift in Sources */,
 			);
@@ -294,13 +318,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Client/Preview Content\"";
+				DEVELOPMENT_TEAM = 2J87U75UHV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Client/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "文字認識";
+				INFOPLIST_KEY_CFBundleDisplayName = MyBorrow;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Open camera?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,13 +351,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Client/Preview Content\"";
+				DEVELOPMENT_TEAM = 2J87U75UHV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Client/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "文字認識";
+				INFOPLIST_KEY_CFBundleDisplayName = MyBorrow;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Open camera?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -371,6 +401,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04EB2E3B299CBC2200D04A35 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		04EB2E3E299CBCA000D04A35 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		44C25556299FB4EC00A58498 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04EB2E3C299CBC2200D04A35 /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04EB2E3B299CBC2200D04A35 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
+		04EB2E3F299CBCA000D04A35 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04EB2E3E299CBCA000D04A35 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		44C25557299FB4EC00A58498 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 44C25556299FB4EC00A58498 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04E5C1C1298229DE004CE174 /* Project object */;
 }

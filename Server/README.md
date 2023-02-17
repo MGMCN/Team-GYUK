@@ -13,7 +13,7 @@ Flask 2.0+
 python -m flask run
 ```
 ## How to use docker
-How to use docker please refer to [link](https://github.com/MGMCN/Team-Gao-Yuan-Uriuriboo-KazukiSenda/blob/main/Tutorials_for_docker/README.md).
+How to use docker please refer to [link](https://github.com/MGMCN/Team-GYUK/tree/main/Tutorials/Tutorials_for_docker).
 ## How to contribute
 The project is small, just add your code to app.py.
 

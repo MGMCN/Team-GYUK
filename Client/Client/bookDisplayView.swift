@@ -8,78 +8,79 @@
 import SwiftUI
 
 struct bookDisplayView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     @State var books: [String] = [
         "book1", "book2", "book3", "book4", "book5", "book6", "book7", "book8",
         "book9", "book10",
     ]
-    @State var rt = false
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                returnButton
-                Spacer()
-                Text("library").foregroundColor(.white).font(.largeTitle)
-                    .fontWeight(.bold)
-                Image(systemName: "books.vertical.fill")
-                    .foregroundColor(.white)
-                    .font(.largeTitle)
-                Spacer(minLength: 106)
-            }
-            VStack {
-                List {
-                    Section(
-                        header:
-                        HStack {
-                            Text("Book Name").foregroundColor(.white)
-                            Image(systemName: "book.fill")
-                                .foregroundColor(.white)
-                        }
-                        .padding(.bottom)
-                        .font(.headline)
+        NavigationView {
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    Image(systemName: "books.vertical.fill")
                         .foregroundColor(.white)
-                    ) {
-                        ForEach(books, id: \.self) { book in
-                            HStack {
-                                Image(systemName: "text.book.closed.fill")
-                                    .foregroundColor(.blue) // .orange
-                                    .font(.title2)
-                                Text(book.capitalized)
-                                    .font(.caption)
-                                    .foregroundColor(.black)
-                                    .padding(.vertical)
-                            }
-                        }
-                        //                    .onDelete(perform: delete)
-                        //                    .onMove(perform: move)
-                        .listRowBackground(Color.white)
-                    }
+                        .font(.largeTitle)
+                    Text("library").foregroundColor(.white).font(.largeTitle)
+                        .fontWeight(.bold)
+                    Spacer()
                 }
-                .scrollContentBackground(.hidden)
+                VStack {
+                    List {
+                        Section(
+                            header:
+                            HStack {
+                                Image(systemName: "book.fill")
+                                    .foregroundColor(.white)
+                                Text("Book Name").foregroundColor(.white)
+                            }
+                            .padding(.bottom)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                        ) {
+                            ForEach(books, id: \.self) { book in
+                                HStack {
+                                    Image(systemName: "text.book.closed.fill")
+                                        .foregroundColor(.blue) // .orange
+                                        .font(.title2)
+                                    Text(book.capitalized)
+                                        .font(.caption)
+                                        .foregroundColor(.black)
+                                        .padding(.vertical)
+                                }
+                            }
+                            //                    .onDelete(perform: delete)
+                            //                    .onMove(perform: move)
+                            .listRowBackground(Color.white)
+                        }
+                    }
+                    .scrollContentBackground(.hidden)
+                    .background(.blue)
+                    .cornerRadius(30)
+                    .shadow(radius: 10)
+                }
+                //                            .accentColor(.purple)
+                //                .listStyle(SidebarListStyle())
+                //            .navigationTitle("Book List")
+                //            .padding()
                 .background(.blue)
-                .cornerRadius(30)
-                .shadow(radius: 10)
             }
-//                            .accentColor(.purple)
-//                .listStyle(SidebarListStyle())
-//            .navigationTitle("Book List")
-//            .padding()
+            .padding()
             .background(.blue)
         }
-        .padding()
-        .background(.blue)
-    }
-
-    var returnButton: some View {
-        Button(
-            action: {
-                self.rt.toggle()
-            }) {
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(
+            leading:
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }, label: {
                 Image(systemName: "arrow.backward.circle")
                     .foregroundColor(.white)
                     .font(.title3)
-            }
-            .padding()
+            })
+        )
     }
 }
 
