@@ -2,6 +2,7 @@ from flask import Blueprint, request, Flask, session
 from flask_mysqldb import MySQL
 from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
+import re
 import json
 
 # create by zheyuan wei
@@ -13,7 +14,7 @@ authapp = Flask(__name__)
 
 mysql = MySQL(authapp)
   
-#register (parameter: email, password, name, authorityType)
+# register (parameter: email, password, name, authorityType)
 @authbp.route('/register', methods=["POST"])
 def register():
     try:
@@ -21,11 +22,22 @@ def register():
         email = request.form["email"]
         password = request.form["password"]
         name = request.form["name"]
-        authorityType = request.form["authorityType"]
+        # authorityType = request.form["authorityType"]
+        #checking the email address and the input of name and password
+        if is_valid_email(email):
+            if password.isspace() or password is '':
+                return json.dumps({"errorMessage": "The password input is empty", "code": 0})
+            elif name.isspace() or name is '':
+                return json.dumps({"errorMessage": "The name input is empty", "code": 0})
+            else:
+                pass
+        else:
+            return json.dumps({"errorMessage": "The email input is wrong", "code": 0})
+
         # checking the duplicate or the account and store in the datebase if not insert the value
         try:
             cur = mysql.connection.cursor()
-            cur.execute("INSERT INTO user(userId,name,email,pwd,authType) VALUES (%s,%s,%s,%s,%s)",(0,name,email,generate_password_hash(password),authorityType))      
+            cur.execute("INSERT INTO user(userId,name,email,pwd,authType) VALUES (%s,%s,%s,%s,%s)",(0,name,email,generate_password_hash(password),'User'))      
             mysql.connection.commit()
         # return if error occurs   
         except cur.IntegrityError:
@@ -37,6 +49,11 @@ def register():
         # if POST miss some value
         return json.dumps({"errorMessage": "Missing Some Value", "code": 0})
 
+# module for valid the email format
+def is_valid_email(email):
+    """Check if email is a valid email address."""
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(pattern, email) is not None
 
 #login  (parameter: email, password)
 @authbp.route('/login', methods=["POST"])
