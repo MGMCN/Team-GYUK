@@ -22,6 +22,6 @@ def test_datebase_creatation():
 body = {'email': 'user1@gmail.com', 'password': '123123', 'name' : 'Jack'}
 
 def test_register():
-    response = requests.request.post(url='http://127.0.0.1:8883/register', data=body)
+    response = requests.post(url='http://127.0.0.1:8883/register', data=body)
     assert response.status_code == 200
     assert response.data['code'] == 1
