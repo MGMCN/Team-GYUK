@@ -68,6 +68,7 @@ struct loginView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.white)
                     .cornerRadius(15)
+                    .foregroundColor(.black)
 
                 // password field
                 HStack {
@@ -87,6 +88,7 @@ struct loginView: View {
                             .padding(.horizontal)
                             .background(Color.white)
                             .cornerRadius(15)
+                            .foregroundColor(.black)
                     } else {
                         SecureField("Your password here...", text: $password)
                             .focused($fieldInFocus, equals: .password)
@@ -97,6 +99,7 @@ struct loginView: View {
                             .frame(maxWidth: .infinity)
                             .background(Color.white)
                             .cornerRadius(15)
+                            .foregroundColor(.black)
                     }
                     Button(
                         action: {

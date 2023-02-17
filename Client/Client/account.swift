@@ -17,4 +17,10 @@ class account {
         self.email = email
         self.password = password
     }
+
+    static func reset() {
+        username = "username"
+        email = "email"
+        password = "password"
+    }
 }

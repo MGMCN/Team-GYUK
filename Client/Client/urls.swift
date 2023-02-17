@@ -8,6 +8,9 @@
 import Foundation
 
 class urls {
-    static var register_url: String = "https://127.0.0.1:8883/register"
+    static var ip = "192.168.11.10"
+    static var port = "8883"
+    static var register_url: String = "http://" + ip + ":" + port + "/register"
+    static var test_url: String = "https://httpbin.org/post"
     init() {}
 }

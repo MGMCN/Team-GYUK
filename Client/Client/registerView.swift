@@ -13,7 +13,7 @@ struct registerView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @State var signUpState = false
-    @State var alertMessage = "Success !"
+    @State var alertMessage = "Connection error !"
 
     @State var username: String = ""
     @State var password: String = ""
@@ -55,6 +55,7 @@ struct registerView: View {
                         .padding(.horizontal)
                         .background(Color.white)
                         .cornerRadius(15)
+                        .foregroundColor(.black)
 
                     HStack {
                         Image(systemName: "envelope.circle.fill")
@@ -71,6 +72,7 @@ struct registerView: View {
                         .padding(.horizontal)
                         .background(Color.white)
                         .cornerRadius(15)
+                        .foregroundColor(.black)
 
                     HStack {
                         Image(systemName: "lock.circle.fill").foregroundColor(.white)
@@ -88,6 +90,7 @@ struct registerView: View {
                                 .padding(.horizontal)
                                 .background(Color.white)
                                 .cornerRadius(15)
+                                .foregroundColor(.black)
                         } else {
                             SecureField("Your password here...", text: $password)
                                 .font(.headline)
@@ -95,6 +98,7 @@ struct registerView: View {
                                 .padding(.horizontal)
                                 .background(Color.white)
                                 .cornerRadius(15)
+                                .foregroundColor(.black)
                         }
                         Button(
                             action: {
@@ -121,6 +125,7 @@ struct registerView: View {
                                 .padding(.horizontal)
                                 .background(Color.white)
                                 .cornerRadius(15)
+                                .foregroundColor(.black)
                         } else {
                             SecureField("Your password here...", text: $confirmPassword)
                                 .font(.headline)
@@ -128,6 +133,7 @@ struct registerView: View {
                                 .padding(.horizontal)
                                 .background(Color.white)
                                 .cornerRadius(15)
+                                .foregroundColor(.black)
                         }
                         Button(
                             action: {
@@ -175,21 +181,16 @@ struct registerView: View {
                 Alert(
                     title: Text("Register Information"),
                     message: Text(alertMessage),
-                    dismissButton: .default(Text("OK")) {}
+                    dismissButton: .default(Text("OK")) {
+                        alertMessage = "Connection error !"
+                    }
                 )
             }
     }
 }
 
 extension registerView {
-    func loginSuccessOrNot() {
-        // Change signUpState and messageFromServer alert message from server. (S/F)
-
-        // Success! signUpState not do toggle()
-        alertMessage = "Success !"
-        // Fail! signUpState do toggle()
-        alertMessage = "Fail !"
-
+    func showRegisterSuccessOrNot() {
         if alertMessage == "Success !" {
             ProgressHUD.colorHUD = .lightGray
             ProgressHUD.showSucceed(alertMessage, delay: 0.75)
@@ -201,18 +202,30 @@ extension registerView {
 
     func handleSignUpButtonPressed() {
         // Read input text message and send to server.
-        let parameters = ["name": username, "email": email, "password": password, "authorityType": "1"]
-        AF.request(urls.register_url, method: .post, parameters: parameters).responseJSON { _ in
-//            switch response.result {
-//                                case .success(let value as [String: Any]):
-//                                    debugPrint("success: \(String(describing: value["code"]))")
-//                                    let code = value["code"]
-//                                    alertMessage = code as! String
-//                                case .failure(let error):
-//                                    debugPrint("Failure: \(error)")
-//                                default: fatalError("Fatal error.")
-//                            }
-            loginSuccessOrNot() // binding with this function
+        if password != confirmPassword {
+            alertMessage = "Password and confirm password do not match"
+            showRegisterSuccessOrNot()
+        } else {
+            let parameters = ["name": username, "email": email, "password": password, "authorityType": "1"]
+            AF.request(urls.register_url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: ["Accept": "application/json"]).responseJSON { response in
+                if let data = response.data {
+                    do {
+                        let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        if let code = jsonObject?["code"] as? Int {
+                            if code == 1 {
+                                alertMessage = "Success !"
+                            } else {
+                                if let message = jsonObject?["errorMessage"] as? String {
+                                    alertMessage = message
+                                }
+                            }
+                        }
+                    } catch {
+                        alertMessage = "Do JSONSerialization fail !"
+                    }
+                }
+                showRegisterSuccessOrNot()
+            }
         }
     }
 }
