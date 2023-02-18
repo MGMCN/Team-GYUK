@@ -215,11 +215,13 @@ struct operationView: View {
                         if case let .success(result) = response {
                             bookName = result.string
                             openCameraState = false
+                            // check operationState and use AF to request
+                            print(bookName)
                         }
                     }
+                    .background(.blue)
                 }
             }
-//            .environmentObject(viewModel)
         }
 //        .background(.blue)
     }
@@ -230,10 +232,8 @@ extension operationView {
         switch operationState {
         case "show":
             showBooksState.toggle()
-        case "borrow":
-            return
         default:
-            return
+            openCameraState.toggle()
         }
     }
 
