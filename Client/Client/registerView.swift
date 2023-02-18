@@ -204,7 +204,7 @@ extension registerView {
     func handleSignUpButtonPressed() {
         // Read input text message and send to server.
         if password != confirmPassword {
-            alertMessage = "Password and confirm password do not match"
+            alertMessage = "Password and confirm password do not match !"
             showRegisterSuccessOrNot()
         } else {
             let parameters = ["name": username, "email": email, "password": password, "authorityType": "1"]
