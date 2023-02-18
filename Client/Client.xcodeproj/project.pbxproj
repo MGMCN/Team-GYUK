@@ -20,6 +20,7 @@
 		04EB2E40299CBCA000D04A35 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 04EB2E3F299CBCA000D04A35 /* Alamofire */; };
 		444ED98A299D1D0C00601475 /* account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444ED989299D1D0C00601475 /* account.swift */; };
 		4468807E299E6BDC0078244A /* urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4468807D299E6BDC0078244A /* urls.swift */; };
+		44B53EDD29A1265C00336F46 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B53EDC29A1265C00336F46 /* Keyboard.swift */; };
 		44C25558299FB4EC00A58498 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 44C25557299FB4EC00A58498 /* CodeScanner */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		04E5C1D3298229DF004CE174 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		444ED989299D1D0C00601475 /* account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = account.swift; sourceTree = "<group>"; };
 		4468807D299E6BDC0078244A /* urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = urls.swift; sourceTree = "<group>"; };
+		44B53EDC29A1265C00336F46 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		44C2555B299FBC3E00A58498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +86,7 @@
 				040A9AC629826DE6007E11F2 /* homeView.swift */,
 				444ED989299D1D0C00601475 /* account.swift */,
 				4468807D299E6BDC0078244A /* urls.swift */,
+				44B53EDC29A1265C00336F46 /* Keyboard.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			files = (
 				4468807E299E6BDC0078244A /* urls.swift in Sources */,
 				04E5C1CF298229DE004CE174 /* ContentView.swift in Sources */,
+				44B53EDD29A1265C00336F46 /* Keyboard.swift in Sources */,
 				040A9AC529826DD4007E11F2 /* registerView.swift in Sources */,
 				04891187298CECFD005E8445 /* loginView.swift in Sources */,
 				04E5C1CD298229DE004CE174 /* ClientApp.swift in Sources */,

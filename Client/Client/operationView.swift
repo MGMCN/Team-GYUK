@@ -27,6 +27,8 @@ import SwiftUI
 
 struct operationView: View {
     @Binding var hide: Bool
+    @Binding var email: String
+    @Binding var password: String
 
     @State var showBooksState = false
 
@@ -195,6 +197,8 @@ struct operationView: View {
 
                         Button(action: {
                             self.hide = false
+                            self.email = ""
+                            self.password = ""
                             self.presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Image(systemName: "door.right.hand.open")
@@ -273,7 +277,9 @@ extension operationView {
 
 struct Previews_operationView_Previews: PreviewProvider {
     @State static var hide = false
+    @State static var email = ""
+    @State static var password = ""
     static var previews: some View {
-        operationView(hide: $hide)
+        operationView(hide: $hide, email: $email, password: $password)
     }
 }
