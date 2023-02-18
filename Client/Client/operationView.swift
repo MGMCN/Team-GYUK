@@ -189,9 +189,11 @@ struct operationView: View {
                             Image(systemName: "door.right.hand.open")
                                 .foregroundColor(.white)
                                 .font(.title2)
+                                .padding([.bottom])
                             Text("Sign out")
                                 .foregroundColor(.white)
                                 .font(.title2)
+                                .padding([.bottom, .trailing])
                         })
                     }
                     .frame(maxHeight: .infinity)

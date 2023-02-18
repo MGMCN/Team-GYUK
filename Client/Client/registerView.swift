@@ -186,6 +186,7 @@ struct registerView: View {
                     }
                 )
             }
+            .padding([.bottom])
     }
 }
 

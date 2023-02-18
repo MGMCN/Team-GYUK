@@ -128,11 +128,13 @@ struct loginView: View {
                             Image(systemName: "arrow.up.and.person.rectangle.portrait")
                                 .foregroundColor(.white)
                                 .font(.title)
+                                .padding([.bottom])
                             Text("Login Now")
                                 .foregroundColor(.white)
                                 .font(.title)
                                 .fontWeight(.semibold)
                                 .shadow(radius: 15)
+                                .padding([.bottom, .trailing])
                         }
                         .padding()
                     Spacer()
