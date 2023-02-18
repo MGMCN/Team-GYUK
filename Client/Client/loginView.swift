@@ -28,7 +28,7 @@ struct loginView: View {
     @FocusState private var fieldInFocus: OnboardingField?
 
     var body: some View {
-        var navi = NavigationView {
+        let navi = NavigationView {
             VStack(alignment: .leading, spacing: 30) {
                 // big logo field
                 Spacer()
