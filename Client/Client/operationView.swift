@@ -216,7 +216,7 @@ struct operationView: View {
                             bookName = result.string
                             openCameraState = false
                             // check operationState and use AF to request
-                            print(bookName)
+                            doOperation()
                         }
                     }
                     .background(.blue)
@@ -231,35 +231,43 @@ extension operationView {
     func doOperation() {
         switch operationState {
         case "show":
-            showBooksState.toggle()
+            return
+        case "borrow":
+            return
+        case "delete":
+            return
+        case "add":
+            return
+        case "return":
+            return
         default:
-            openCameraState.toggle()
+            return
         }
     }
 
     func handleShowBooksButtonPressed() {
         operationState = "show"
-        doOperation()
+        showBooksState.toggle()
     }
 
     func handleBorrowButtonPressed() {
         operationState = "borrow"
-        doOperation()
+        openCameraState.toggle()
     }
 
     func handleDeleteButtonPressed() {
         operationState = "delete"
-        doOperation()
+        openCameraState.toggle()
     }
 
     func handleAddBookButtonPressed() {
         operationState = "add"
-        doOperation()
+        openCameraState.toggle()
     }
 
     func handleReturnButtonPressed() {
         operationState = "return"
-        doOperation()
+        openCameraState.toggle()
     }
 }
 
