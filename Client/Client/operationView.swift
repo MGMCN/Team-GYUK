@@ -215,7 +215,7 @@ struct operationView: View {
                 }
                 .background(.blue)
                 .sheet(isPresented: $openCameraState) {
-                    CodeScannerView(codeTypes: [.qr]) { response in
+                    CodeScannerView(codeTypes: [.qr], scanMode: .once, showViewfinder: true) { response in
                         if case let .success(result) = response {
                             bookName = result.string
                             openCameraState = false
