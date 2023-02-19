@@ -12,6 +12,8 @@ import SwiftUI
 struct loginView: View {
     @Environment(\.presentationMode) var presentationMode
 
+    @ObservedObject var keyboard = KeyboardResponder()
+
     enum OnboardingField: Hashable {
         case email
         case password
@@ -28,7 +30,7 @@ struct loginView: View {
     @FocusState private var fieldInFocus: OnboardingField?
 
     var body: some View {
-        var navi = NavigationView {
+        let navi = NavigationView {
             VStack(alignment: .leading, spacing: 30) {
                 // big logo field
                 Spacer()
@@ -47,6 +49,7 @@ struct loginView: View {
                     }
                     Spacer()
                 }
+                .offset(y: -keyboard.keyboardHeight / 2)
                 Spacer()
 
                 // email field
@@ -59,6 +62,7 @@ struct loginView: View {
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                 }
+                .offset(y: -keyboard.keyboardHeight / 2)
                 TextField("Your email here...", text: $email)
                     .focused($fieldInFocus, equals: .email)
                     //                .focused($usernameInFocus)
@@ -68,6 +72,8 @@ struct loginView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.white)
                     .cornerRadius(15)
+                    .foregroundColor(.black)
+                    .offset(y: -keyboard.keyboardHeight / 2)
 
                 // password field
                 HStack {
@@ -78,6 +84,7 @@ struct loginView: View {
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                 }
+                .offset(y: -keyboard.keyboardHeight / 2)
                 ZStack(alignment: .trailing) {
                     if showPwd {
                         TextField("Your password here...", text: $password)
@@ -87,6 +94,7 @@ struct loginView: View {
                             .padding(.horizontal)
                             .background(Color.white)
                             .cornerRadius(15)
+                            .foregroundColor(.black)
                     } else {
                         SecureField("Your password here...", text: $password)
                             .focused($fieldInFocus, equals: .password)
@@ -97,6 +105,7 @@ struct loginView: View {
                             .frame(maxWidth: .infinity)
                             .background(Color.white)
                             .cornerRadius(15)
+                            .foregroundColor(.black)
                     }
                     Button(
                         action: {
@@ -106,11 +115,12 @@ struct loginView: View {
                         }
                         .padding()
                 }
+                .offset(y: -keyboard.keyboardHeight / 2)
 
                 // login button field
                 HStack {
                     // use logout dont use navigationview back button
-                    NavigationLink(destination: operationView(hide: self.$hide)
+                    NavigationLink(destination: operationView(hide: self.$hide, email: $email, password: $password)
                         .navigationBarBackButtonHidden(true),
                         isActive: $loginState) {
                             EmptyView()
@@ -125,12 +135,15 @@ struct loginView: View {
                             Image(systemName: "arrow.up.and.person.rectangle.portrait")
                                 .foregroundColor(.white)
                                 .font(.title)
+                                .padding([.bottom])
                             Text("Login Now")
                                 .foregroundColor(.white)
                                 .font(.title)
                                 .fontWeight(.semibold)
                                 .shadow(radius: 15)
+                                .padding([.bottom, .trailing])
                         }
+                        .offset(y: -keyboard.keyboardHeight / 2)
                         .padding()
                     Spacer()
                 }
@@ -144,7 +157,6 @@ struct loginView: View {
             leading:
             Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
-
             }, label: {
                 Image(systemName: "arrow.backward.circle")
                     .foregroundColor(.white)
@@ -177,7 +189,7 @@ extension loginView {
         ProgressHUD.colorHUD = .lightGray
         ProgressHUD.showSucceed("Success !", delay: 0.75)
         loginState.toggle()
-
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         // if return fail show alert message
     }
 }

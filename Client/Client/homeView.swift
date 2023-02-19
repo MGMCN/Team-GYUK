@@ -89,6 +89,7 @@ struct homeView: View {
             .onTapGesture {
                 handleloginButtonPressed()
             }
+            .padding([.bottom])
     }
 }
 

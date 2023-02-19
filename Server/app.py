@@ -2,6 +2,7 @@ from __init__ import app
 from auth import authbp
 from bksf import bksfbp
 from flask_mysqldb import MySQL
+import json
 
 app.register_blueprint(authbp)
 app.register_blueprint(bksfbp)
@@ -23,6 +24,10 @@ def test_demo():
 
 @app.route('/')
 def hello_world():  # put application's code here
+        return 'Hello World!'
+# initialize the database, if exist return message
+@app.route("/database_create")
+def database_create():
     try:
         cur = mysql.connection.cursor()
         cur.execute(''' CREATE TABLE `Serverdb`.`user` (
@@ -57,9 +62,9 @@ def hello_world():  # put application's code here
             );
             ''')
         mysql.connection.commit()
+        return json.dumps({"processMessage" : "Create Success", "code": 1})
     except cur.OperationalError:
-
-        return 'Hello World!'
-
+        return json.dumps({"errorMessage": "Database Already Exist", "code": 0})
 if __name__ == '__main__':
+    app.secret_key = 'super secret key'
     app.run(host="0.0.0.0", port=5000)

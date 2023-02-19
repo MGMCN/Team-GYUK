@@ -15,6 +15,8 @@ struct bookDisplayView: View {
         "book9", "book10",
     ]
 
+    @State var bookStates: [String] = []
+
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
