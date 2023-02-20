@@ -92,7 +92,6 @@ def login():
             pass
         else:
             session_tmp[session["user_id"]] = email     
-        return json.dumps(session_tmp)
     # return the session key and the authentication type to the frontend
     if email_db["authType"] == "Manager":
         return json.dumps({"session_key": session["user_id"], "authtype": 0,"processMessage": "Login Successful", "code": 1})
