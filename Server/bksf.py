@@ -1,4 +1,5 @@
 from __init__ import mysql, BookStatus, AuthType
+from auth import session_tmp
 # from forms import BookForm, BookUpdateForm
 from flask import Blueprint, render_template, redirect, url_for, request
 import json
@@ -26,7 +27,20 @@ def extract_form_data(form, headers):
     return values
 
 def update_headers():
-    return ['userId', 'bookName']
+    return ['session_key', 'bookName']
+
+def current_user(session_key):
+    try:
+        email = session_tmp[session_key]
+        print(f'email={email}', flush=True)
+        cursor = mysql.connection.cursor()
+        sql = """SELECT * from user WHERE email=%s"""
+        cursor.execute(sql, [email])
+        user = cursor.fetchone()
+        return user
+    except Exception as e:
+        print(e, flush=True)
+        return None
 
 bksfbp = Blueprint('bksfbp',__name__) #,url_prefix='/books')
 
@@ -44,12 +58,12 @@ def add():
     if errors:
         return print_error(errors)
     try:
-        cursor = mysql.connection.cursor()
-        sql = """SELECT * from user WHERE userId=%s"""
-        cursor.execute(sql, extract_form_data(request.form, ['userId']))
-        user = cursor.fetchone()
+        user = current_user(request.form['session_key'])
+        if not user:
+            return print_error("You are not logged in")
         if user['authType'] != AuthType.MANAGER.value:
             return print_error("You are not a manager")
+        cursor = mysql.connection.cursor()
         sql = """INSERT INTO book (bookName) VALUES (%s)"""
         cursor.execute(sql, extract_form_data(request.form, ['bookName']))
         mysql.connection.commit()
@@ -64,13 +78,12 @@ def delete():
     if errors:
         return print_error(errors)
     try:
-        cursor = mysql.connection.cursor()
-
-        sql = """SELECT * from user where userId=%s"""
-        cursor.execute(sql, extract_form_data(request.form, ['userId']))
-        user = cursor.fetchone()
+        user = current_user(request.form['session_key'])
+        if not user:
+            return print_error("You are not logged in")
         if user['authType'] != AuthType.MANAGER.value:
             return print_error("You are not a manager")
+        cursor = mysql.connection.cursor()
         sql = """SELECT * FROM book WHERE bookStatus=%s AND bookName=%s"""
         cursor.execute(sql, [BookStatus.AVAILABLE.value] + extract_form_data(request.form, ['bookName']))
         book = cursor.fetchone()
@@ -96,11 +109,15 @@ def returnbooks():
         book = cursor.fetchone()
         if not book:
             return print_error("Book not found")
+        
+        user = current_user(request.form['session_key'])
+        if not user:
+            return print_error("You are not logged in")
         bookId = book['bookId']
         sql = """UPDATE book SET bookStatus=%s WHERE bookId=%s"""
         cursor.execute(sql, [BookStatus.AVAILABLE.value, bookId])
         sql = """DELETE FROM borrowStatus WHERE userId=%s AND bookId=%s"""
-        cursor.execute(sql, extract_form_data(request.form, ['userId']) + [bookId])
+        cursor.execute(sql, [user['userId'], bookId])
         mysql.connection.commit()
     except Exception as e:
         return print_error(e)
@@ -119,11 +136,15 @@ def borrowbooks():
         book = cursor.fetchone()
         if not book:
             return print_error("Book not found")
+        
+        user = current_user(request.form['session_key'])
+        if not user:
+            return print_error("You are not logged in")
         bookId = book['bookId']
         sql = """UPDATE book SET bookStatus=%s WHERE bookId=%s"""
         cursor.execute(sql, [BookStatus.BORROWED.value, bookId])
         sql = """INSERT INTO borrowStatus (userId, bookId) VALUES (%s, %s)"""
-        cursor.execute(sql, extract_form_data(request.form, ['userId']) + [bookId])
+        cursor.execute(sql, [user['userId'], bookId])
         mysql.connection.commit()
     except Exception as e:
         return print_error(e)
