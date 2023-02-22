@@ -6,7 +6,7 @@ COPY requirements.txt requirements.txt
 
 RUN pip3 install -r requirements.txt
 
-COPY * /app/Server/
+COPY . /app/Server/
 
 WORKDIR /app/Server
 

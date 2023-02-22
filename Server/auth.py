@@ -13,7 +13,13 @@ authbp = Blueprint('authbp',__name__)
 authapp = Flask(__name__)
 
 mysql = MySQL(authapp)
-  
+
+session_tmp = {} 
+   
+
+
+
+
 # register (parameter: email, password, name, authorityType)
 @authbp.route('/register', methods=["POST"])
 def register():
@@ -55,6 +61,10 @@ def is_valid_email(email):
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     return re.match(pattern, email) is not None
 
+
+
+
+
 #login  (parameter: email, password)
 @authbp.route('/login', methods=["POST"])
 def login():
@@ -78,6 +88,10 @@ def login():
         # store the user id in a new session and return to the index
         session.clear()
         session["user_id"] = generate_password_hash(email)
+        if email in session_tmp.values():
+            pass
+        else:
+            session_tmp[session["user_id"]] = email     
     # return the session key and the authentication type to the frontend
     if email_db["authType"] == "Manager":
         return json.dumps({"session_key": session["user_id"], "authtype": 0,"processMessage": "Login Successful", "code": 1})
@@ -85,9 +99,16 @@ def login():
         return json.dumps({"session_key": session["user_id"], "authtype": 1,"processMessage": "Login Successful", "code": 1})
 
 
+# @authbp.route('/tmp')
+# def tmp():
+#     return json.dumps(session_tmp)
+
+
 #logout
-@authbp.route('/logout')
+@authbp.route('/logout', methods=["POST"])
 def logout():
     # Clear the current session, including the stored user id.
     session.clear()
+    skey = request.form["session_key"]
+    session_tmp.pop(skey)
     return json.dumps({"processMessage": "Logout Successful", "code": 1})

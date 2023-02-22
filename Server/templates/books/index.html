@@ -1,0 +1,41 @@
+<!-- web/templates/index.html -->
+
+{% extends "base.html" %}
+{% block content %}
+<br>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+
+  {% for book in books%}
+      <tbody>
+        <tr>
+          <td> <a href="{{ url_for('.update', id=book.id) }}"> {{ book.bookName }} </a></td>
+          <td> {{ book.bookStatus }} </td>
+        </tr>
+      </tbody>
+  {% endfor %}
+</table>
+<p align="right">合計　{{ books.total }}　冊　</p>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    {% for page in books.iter_pages(left_edge=2, left_current=2, right_current=5, right_edge=2) %}
+      {% if page %}
+        {% if page != books.page %}
+            <li class="page-item"><a class="page-link" href="{{ url_for('.index_pages', page_num=page) }}">{{ page }}</a></li>
+        {% else %}
+            <li class="page-item active"><a class="page-link">{{ page }}</a></li>
+        {% endif %}
+      {% else %}
+        <span> ... </span>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
+{% endblock %}
