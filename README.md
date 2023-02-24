@@ -22,7 +22,7 @@ You can see our document! Here is the link👇🏻
 |Tutorials|[link](https://github.com/MGMCN/Team-GYUK/tree/main/Tutorials)|
 |PBL tasks|[link](https://github.com/MGMCN/Team-GYUK/tree/main/Tasks)|
 ## Why we developed this application
-This is an assignment for one of our classes, designed to familiarize us with the software development process as well as to get comfortable with collaborative multi-person development.
+This is a requirement of our PBL project, designed to familiarize us with the software development process, as well as to accommodate collaborative development by multiple people.
 # Contributions
 |task|collaborators|
 |---|---|
