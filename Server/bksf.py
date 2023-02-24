@@ -4,21 +4,30 @@ from auth import session_tmp
 from flask import Blueprint, render_template, redirect, url_for, request
 import json
 
+
 def print_error(error="Error"):
     return json.dumps({'errorMessage': str(error), 'code': 0})
+
+
 def print_success(success="Success"):
     return json.dumps({'processMessage': str(success), 'code': 1})
+
+
 def validate_form_data(form, headers):
     errors = []
     for header in headers:
         if header not in form:
             errors.append(f"{header} is empty")
     return errors
+
+
 def row_count():
     cursor = mysql.connection.cursor()
     cursor.execute("SELECT COUNT(*) FROM book")
-    count = cursor.fetchone()[0] # to get current ID
+    count = cursor.fetchone()[0]  # to get current ID
     return count + 1
+
+
 def extract_form_data(form, headers):
     values = []
     # values.append(row_count())
@@ -26,8 +35,10 @@ def extract_form_data(form, headers):
         values.append(form[header])
     return values
 
+
 def update_headers():
     return ['session_key', 'bookName']
+
 
 def current_user(session_key):
     try:
@@ -42,15 +53,18 @@ def current_user(session_key):
         print(e, flush=True)
         return None
 
-bksfbp = Blueprint('bksfbp',__name__) #,url_prefix='/books')
+
+bksfbp = Blueprint('bksfbp', __name__)  # ,url_prefix='/books')
+
 
 @bksfbp.route('/getbooklist')
 def show_all():
-   cs = mysql.connection.cursor()
-   cs.execute('''SELECT * FROM book''')
-   result = json.dumps(cs.fetchall())
-   cs.close()
-   return result
+    cs = mysql.connection.cursor()
+    cs.execute('''SELECT * FROM book''')
+    result = json.dumps(cs.fetchall())
+    cs.close()
+    return result
+
 
 @bksfbp.route('/addbooks', methods=['POST'])
 def add():
@@ -71,6 +85,7 @@ def add():
         return print_error(e)
 
     return print_success()
+
 
 @bksfbp.route('/deletebooks', methods=['POST'])
 def delete():
@@ -97,6 +112,7 @@ def delete():
 
     return print_success()
 
+
 @bksfbp.route('/returnbooks', methods=['POST'])
 def returnbooks():
     errors = validate_form_data(request.form, update_headers())
@@ -109,7 +125,7 @@ def returnbooks():
         book = cursor.fetchone()
         if not book:
             return print_error("Book not found")
-        
+
         user = current_user(request.form['session_key'])
         if not user:
             return print_error("You are not logged in")
@@ -124,6 +140,7 @@ def returnbooks():
 
     return print_success()
 
+
 @bksfbp.route('/borrowbooks', methods=['POST'])
 def borrowbooks():
     errors = validate_form_data(request.form, update_headers())
@@ -136,7 +153,7 @@ def borrowbooks():
         book = cursor.fetchone()
         if not book:
             return print_error("Book not found")
-        
+
         user = current_user(request.form['session_key'])
         if not user:
             return print_error("You are not logged in")
@@ -150,6 +167,7 @@ def borrowbooks():
         return print_error(e)
 
     return print_success()
+
 
 """
 # RestfulAPI

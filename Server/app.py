@@ -1,14 +1,17 @@
 from __init__ import app, mysql
 from auth import authbp
 from bksf import bksfbp
+from auth import generate_password_hash
 import json
 
 app.register_blueprint(authbp)
 app.register_blueprint(bksfbp)
 
+
 @app.route('/test_demo')
 def test_demo():
     return "Hello World!"
+
 
 @app.route('/')
 def hello_world():  # put application's code here
@@ -16,6 +19,8 @@ def hello_world():  # put application's code here
     str += "<a href='/database_create'>Create Database</a><br/>"
     str += "<a href='/database_drop'>Drop Database</a><br/>"
     return str
+
+
 # initialize the database, if exist return message
 @app.route("/database_create")
 def database_create():
@@ -53,9 +58,10 @@ def database_create():
             );
             ''')
         mysql.connection.commit()
-        return json.dumps({"processMessage" : "Create Success", "code": 1})
+        return json.dumps({"processMessage": "Create Success", "code": 1})
     except cur.OperationalError:
         return json.dumps({"errorMessage": "Database Already Exist", "code": 0})
+
 
 # Drop the database, if exist return message
 @app.route("/database_drop")
@@ -66,9 +72,26 @@ def database_drop():
         cur.execute(''' DROP TABLE `Serverdb`.`book` ''')
         cur.execute(''' DROP TABLE `Serverdb`.`user` ''')
         mysql.connection.commit()
-        return json.dumps({"processMessage" : "Drop Success", "code": 1})
+        return json.dumps({"processMessage": "Drop Success", "code": 1})
     except cur.OperationalError:
         return json.dumps({"errorMessage": "Drop failed", "code": 0})
+
+
+@app.route("/create_admin")
+def create_admin():
+    try:
+        name = 'admin'
+        email = 'admin@admin.com'
+        password = 'admin'
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO user(userId,name,email,pwd,authType) VALUES (%s,%s,%s,%s,%s)",
+                    (0, name, email, generate_password_hash(password), 'Manager'))
+        mysql.connection.commit()
+        return json.dumps({"processMessage": "create admin Success", "code": 1})
+    except cur.OperationalError:
+        return json.dumps({"errorMessage": "create admin failed", "code": 0})
+
+
 if __name__ == '__main__':
     app.secret_key = 'super secret key'
     app.run(host="0.0.0.0", port=5000)

@@ -3,14 +3,18 @@ from flask import Flask
 from flask_mysqldb import MySQL
 from enum import Enum
 
+
 class BookStatus(Enum):
     AVAILABLE = 'available'
     BORROWED = 'borrowed'
+
+
 class AuthType(Enum):
     MANAGER = 'Manager'
     USER = 'User'
 
-#MySQL Connection
+
+# MySQL Connection
 app = Flask(__name__)
 # app.config.from_object(Config)
 app.config['MYSQL_HOST'] = 'mysql'

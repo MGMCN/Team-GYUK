@@ -9,6 +9,7 @@ USER = os.getenv('USER')
 PASSWORD = os.getenv('PASSWORD')
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+
 class Config(object):
     MYSQL_HOST = DATABASE_URL
     MYSQL_USER = USER

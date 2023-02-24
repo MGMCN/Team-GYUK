@@ -4,13 +4,16 @@ from wtforms.fields import DateField
 # from wtforms import DateField
 from wtforms.validators import DataRequired
 
+
 class BookForm(FlaskForm):
     bookName = StringField('Name', validators=[DataRequired()])
     bookStatus = StringField('Status', validators=[DataRequired()])
     submit = SubmitField('登録')
 
+
 class BookUpdateForm(BookForm):
     submit = SubmitField('修正')
+
 
 class SearchForm(FlaskForm):
     title = StringField('書籍')
