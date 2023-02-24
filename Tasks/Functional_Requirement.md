@@ -7,26 +7,26 @@ Thank you very much.
 
 | Completed | Functional requirement |
 | -- | -- |
-| ❌ | Registration function |
-| ❌ | Login function |
-| ❌ | Logout function |
-| ❌ | Add books function |
-| ❌ | Borrow books function |
-| ❌ | Return books function |
+| ✅ | Registration function |
+| ✅ | Login function |
+| ✅ | Logout function |
+| ✅ | Add books function |
+| ✅ | Borrow books function |
+| ✅ | Return books function |
 
 ## Client (ios App)
 
 | Completed | Functional requirement |
 | -- | -- |
-| ❌ | Login frame |
-| ❌ | Login button function |
-| ❌ | Register button function |
-| ❌ | Main frame (We can click the button on this page to borrow and add books. Etc ... ) |
-| ❌ | Add books button function |
-| ❌ | Borrow books button function |
-| ❌ | Return books button function |
-| ❌ | Scan the image to extract text function |
-| ❌ | Send the request to the server function |
+| ✅ | Login frame |
+| ✅ | Login button function |
+| ✅ | Register button function |
+| ✅ | Main frame (We can click the button on this page to borrow and add books. Etc ... ) |
+| ✅ | Add books button function |
+| ✅ | Borrow books button function |
+| ✅ | Return books button function |
+| ❌ | Scan the image to extract text function (We changed this function to scan the QR code to get the book title)|
+| ✅ | Send the request to the server function |
 
 
 ❌ :Function development hasn't started yet.  
