@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct homeView: View {
-//    @Environment(\.presentationMode) var presentationMode
-
     @State var signUpState = false
     @State var loginState = false
 

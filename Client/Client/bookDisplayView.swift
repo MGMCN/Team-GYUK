@@ -45,7 +45,7 @@ struct bookDisplayView: View {
                             ForEach(books, id: \.self) { book in
                                 HStack {
                                     Image(systemName: "text.book.closed.fill")
-                                        .foregroundColor(.blue) // .orange
+                                        .foregroundColor(.blue)
                                         .font(.title2)
                                     Text(book.capitalized)
                                         .font(.caption)
@@ -63,10 +63,6 @@ struct bookDisplayView: View {
                     .cornerRadius(30)
                     .shadow(radius: 10)
                 }
-                //                            .accentColor(.purple)
-                //                .listStyle(SidebarListStyle())
-                //            .navigationTitle("Book List")
-                //            .padding()
                 .background(.blue)
             }
             .padding()
