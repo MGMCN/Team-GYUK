@@ -5,10 +5,10 @@
 //  Created by Yamaoka and GAO SHAN on 2023/01/26.
 //
 
+import Alamofire
 import Foundation
 import ProgressHUD
 import SwiftUI
-import Alamofire
 
 struct loginView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -207,18 +207,19 @@ extension loginView {
             }
             showLoginSuccessOrNot()
         }
-        
+
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
-    func showLoginSuccessOrNot(){
-        if alertMessage == "Success !"{
-            account.set(username: "username", email: email, password: password, authtype: authtype,sessionkey: sessionkey)
+
+    func showLoginSuccessOrNot() {
+        if alertMessage == "Success !" {
+            account.set(username: "username", email: email, password: password, authtype: authtype, sessionkey: sessionkey)
             ProgressHUD.colorHUD = .lightGray
             ProgressHUD.showSucceed("Success !", delay: 0.75)
             // if login success hide above navigationbar(back button) -> set hide = true
-            self.hide = true
+            hide = true
             loginState.toggle()
-        }else{
+        } else {
             loginFailState.toggle()
         }
     }

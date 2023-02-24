@@ -5,11 +5,11 @@
 //  Created by Yamaoka and GAO SHAN on 2023/01/26.
 //
 
+import Alamofire
 import CodeScanner
 import Foundation
-import SwiftUI
 import ProgressHUD
-import Alamofire
+import SwiftUI
 
 struct operationView: View {
     @Binding var hide: Bool
@@ -19,17 +19,17 @@ struct operationView: View {
     @State var showBooksState = false
 
     @State var openCameraState = false
-    
+
     @State var doOperationState = false
 
     @State var operationState = "operationState"
 
     @State var bookName = "bookName"
-    
+
     @State var alertMessage = "alertMessage"
-    
+
     @State var books = [String]()
-    
+
     @State var bookStates = [String]()
 
     @Environment(\.presentationMode) var presentationMode
@@ -144,7 +144,7 @@ struct operationView: View {
                                     .cornerRadius(10)
                                     .shadow(radius: 15)
                                     .padding(.vertical)
-                                
+
                                 Button(
                                     action: {
                                         handleDeleteButtonPressed()
@@ -166,7 +166,7 @@ struct operationView: View {
                                     .background(Color(hue: 0.588, saturation: 0.564, brightness: 0.973, opacity: 0.9))
                                     .cornerRadius(10)
                                     .shadow(radius: 15)
-                                
+
                                 Button(
                                     action: {})
                                 {
@@ -202,8 +202,7 @@ struct operationView: View {
                     Alert(
                         title: Text("Operation Information"),
                         message: Text(alertMessage),
-                        dismissButton: .default(Text("OK")) {
-                        }
+                        dismissButton: .default(Text("OK")) {}
                     )
                 }
                 .background(.blue)
@@ -224,13 +223,12 @@ struct operationView: View {
 }
 
 extension operationView {
-    
     func showSuccessProgressHUD() {
         ProgressHUD.colorHUD = .lightGray
         ProgressHUD.showSucceed("Success !", delay: 0.75)
     }
-    
-    func doRequest(url: String){
+
+    func doRequest(url: String) {
         let parameters = ["session_key": account.sessionkey, "bookName": bookName]
         AF.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: ["Accept": "application/json"]).responseJSON { response in
             if let data = response.data {
@@ -252,39 +250,39 @@ extension operationView {
             showOperationSuccessOrNot()
         }
     }
-    
-    func doGetBookList(){
+
+    func doGetBookList() {
         AF.request(urls.showbooks_url, method: .get, encoding: URLEncoding.default, headers: ["Accept": "application/json"]).responseJSON { response in
             if let data = response.data {
                 do {
                     books.removeAll()
                     bookStates.removeAll()
-                        if let jsonArray = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
-                            // jsonArray contains an array of dictionaries, each representing an object
-                            for dictionary in jsonArray {
-                                if let bookname = dictionary["bookName"] as? String, let bookstatus = dictionary["bookStatus"] as? String {
-                                    books.append(bookname+"   ("+bookstatus+")")
-                                    bookStates.append(bookstatus)
-                                }
+                    if let jsonArray = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+                        // jsonArray contains an array of dictionaries, each representing an object
+                        for dictionary in jsonArray {
+                            if let bookname = dictionary["bookName"] as? String, let bookstatus = dictionary["bookStatus"] as? String {
+                                books.append(bookname + "   (" + bookstatus + ")")
+                                bookStates.append(bookstatus)
                             }
                         }
-                    showBooksState.toggle()
-                    } catch {
-                        alertMessage = "Error parsing JSON: \(error.localizedDescription)"
-                        doOperationState.toggle()
                     }
+                    showBooksState.toggle()
+                } catch {
+                    alertMessage = "Error parsing JSON: \(error.localizedDescription)"
+                    doOperationState.toggle()
+                }
             }
         }
     }
-    
-    func showOperationSuccessOrNot(){
-        if alertMessage == "Success !"{
+
+    func showOperationSuccessOrNot() {
+        if alertMessage == "Success !" {
             showSuccessProgressHUD()
-        }else{
+        } else {
             doOperationState.toggle()
         }
     }
-    
+
     func doOperation() {
         switch operationState {
         case "show":
@@ -330,8 +328,8 @@ extension operationView {
         operationState = "return"
         openCameraState.toggle()
     }
-    
-    func handleSignOutButtonPressed(){
+
+    func handleSignOutButtonPressed() {
         // request logout
         let parameters = ["session_key": account.sessionkey]
         AF.request(urls.logout_url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: ["Accept": "application/json"]).responseJSON { response in
