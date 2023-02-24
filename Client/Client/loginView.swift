@@ -8,6 +8,7 @@
 import Foundation
 import ProgressHUD
 import SwiftUI
+import Alamofire
 
 struct loginView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -22,6 +23,10 @@ struct loginView: View {
     // make it static so other var can easily access
     @State var hide = false
     @State var loginState = false
+    @State var loginFailState = false
+    @State var alertMessage = "Login failed !"
+    @State var sessionkey = "sessionkey"
+    @State var authtype = 1
 //    @FocusState private var usernameInFocus: Bool
     @State private var email: String = ""
 //    @FocusState private var passwordInFocus: Bool
@@ -65,7 +70,6 @@ struct loginView: View {
                 .offset(y: -keyboard.keyboardHeight / 2)
                 TextField("Your email here...", text: $email)
                     .focused($fieldInFocus, equals: .email)
-                    //                .focused($usernameInFocus)
                     .padding(.leading)
                     .font(.headline)
                     .frame(height: 55)
@@ -98,7 +102,6 @@ struct loginView: View {
                     } else {
                         SecureField("Your password here...", text: $password)
                             .focused($fieldInFocus, equals: .password)
-                            //                .focused($passwordInFocus)
                             .padding(.leading)
                             .frame(height: 55)
                             .font(.headline)
@@ -129,8 +132,6 @@ struct loginView: View {
                     Button(
                         action: {
                             handleLoginButtonPressed()
-                            // if login success hide above navigationbar(back button) -> set hide = true
-                            self.hide = true
                         }) {
                             Image(systemName: "arrow.up.and.person.rectangle.portrait")
                                 .foregroundColor(.white)
@@ -145,6 +146,15 @@ struct loginView: View {
                         }
                         .offset(y: -keyboard.keyboardHeight / 2)
                         .padding()
+                        .alert(isPresented: $loginFailState) {
+                            Alert(
+                                title: Text("Login Information"),
+                                message: Text(alertMessage),
+                                dismissButton: .default(Text("OK")) {
+                                    alertMessage = "Login failed !"
+                                }
+                            )
+                        }
                     Spacer()
                 }
             }
@@ -170,27 +180,47 @@ struct loginView: View {
 
 extension loginView {
     func handleLoginButtonPressed() {
-        let usernameIsValid = !email.isEmpty
-        let passwordIsValid = !password.isEmpty
-        if usernameIsValid, passwordIsValid {
-            print("Login")
-        } else if usernameIsValid {
-            fieldInFocus = .password
-            //                    usernameInFocus = false
-            //                    passwordInFocus = true
-        } else {
-            fieldInFocus = .email
-            //                    usernameInFocus = true
-            //                    passwordInFocus = false
-        }
         // send email and pswd to server.
-
-        // if return success do loginState.toggle()
-        ProgressHUD.colorHUD = .lightGray
-        ProgressHUD.showSucceed("Success !", delay: 0.75)
-        loginState.toggle()
+        let parameters = ["email": email, "password": password]
+        AF.request(urls.login_url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: ["Accept": "application/json"]).responseJSON { response in
+            if let data = response.data {
+                do {
+                    let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                    if let code = jsonObject?["code"] as? Int {
+                        if code == 1 {
+                            alertMessage = "Success !"
+                            if let key = jsonObject?["session_key"] as? String {
+                                sessionkey = key
+                            }
+                            if let type = jsonObject?["authtype"] as? Int {
+                                authtype = type
+                            }
+                        } else {
+                            if let message = jsonObject?["errorMessage"] as? String {
+                                alertMessage = message
+                            }
+                        }
+                    }
+                } catch {
+                    alertMessage = "Do JSONSerialization fail !"
+                }
+            }
+            showLoginSuccessOrNot()
+        }
+        
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-        // if return fail show alert message
+    }
+    func showLoginSuccessOrNot(){
+        if alertMessage == "Success !"{
+            account.set(username: "username", email: email, password: password, authtype: authtype,sessionkey: sessionkey)
+            ProgressHUD.colorHUD = .lightGray
+            ProgressHUD.showSucceed("Success !", delay: 0.75)
+            // if login success hide above navigationbar(back button) -> set hide = true
+            self.hide = true
+            loginState.toggle()
+        }else{
+            loginFailState.toggle()
+        }
     }
 }
 

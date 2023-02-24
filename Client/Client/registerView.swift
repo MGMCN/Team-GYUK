@@ -177,6 +177,7 @@ struct registerView: View {
             .onTapGesture {
                 handleSignUpButtonPressed()
             }
+            .padding([.bottom])
             .alert(isPresented: $signUpState) {
                 Alert(
                     title: Text("Register Information"),
@@ -186,7 +187,6 @@ struct registerView: View {
                     }
                 )
             }
-            .padding([.bottom])
     }
 }
 
