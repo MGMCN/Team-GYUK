@@ -1,4 +1,4 @@
-name: Auto test tool for flask and swift-format
+name: Auto tests for flask and swift-format
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v3
     
     - name: Install python dependencies  
       run: pip3 install pytest requests
@@ -48,12 +48,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-
-#     - name: Build proj
-#       run: |
-#         cd ./Client
-#         sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
-#         xcodebuild -project Client.xcodeproj -scheme Client
 
     - name: install swiftformat
       run: brew install swiftformat
