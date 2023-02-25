@@ -1,5 +1,5 @@
 # Fast book borrowing App
-![image](https://img.shields.io/github/actions/workflow/status/MGMCN/Team-GYUK/actions.yml?logo=github)  
+![image](https://img.shields.io/github/actions/workflow/status/MGMCN/Team-GYUK/actions.yml?label=tests&logo=github)  
 
 Using the app developed by us, you can borrow and return books by scanning the QR code. At the same time, this app realizes a simple registration and login function. This app also implements administrator privileges and normal user privileges. When you are logged in as an administrator, you can add books to the library or delete books.
 ## Framework & Maintenance technologies & programming languages we use
@@ -24,7 +24,7 @@ You can see our document! Here is the link👇🏻
 |Tutorials|[link](https://github.com/MGMCN/Team-GYUK/tree/main/Tutorials)|
 |PBL tasks|[link](https://github.com/MGMCN/Team-GYUK/tree/main/Tasks)|
 ## Why we developed this application
-This is a requirement of our PBL project, designed to familiarize us with the software development process, as well as to accommodate collaborative development by multiple people.
+This is a requirement of our PBL project, designed to familiarize us with the software development process, as well as to accommodate collaborative development by multiple people. ( ps: Our respective coding styles were not elegant and did not strictly follow the design patterns in writing the code. This project was only designed to allow us to adapt to collaborative multi-person development. )
 # Contributions
 |task|collaborators|
 |---|---|
