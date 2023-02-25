@@ -1,4 +1,5 @@
 # Fast book borrowing App
+![image](https://img.shields.io/github/license/MGMCN/Team-GYUK)
 ![image](https://img.shields.io/github/actions/workflow/status/MGMCN/Team-GYUK/actions.yml?label=tests&logo=github)  
 
 Using the app developed by us, you can borrow and return books by scanning the QR code. At the same time, this app realizes a simple registration and login function. This app also implements administrator privileges and normal user privileges. When you are logged in as an administrator, you can add books to the library or delete books.
