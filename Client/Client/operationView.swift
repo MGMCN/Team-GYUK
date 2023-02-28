@@ -228,7 +228,7 @@ extension operationView {
         ProgressHUD.showSucceed("Success !", delay: 0.75)
     }
 
-    func doRequest(url: String) {
+    func doRequest(url: String, error_message: String) {
         let parameters = ["session_key": account.sessionkey, "bookName": bookName]
         AF.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: ["Accept": "application/json"]).responseJSON { response in
             if let data = response.data {
@@ -238,9 +238,9 @@ extension operationView {
                         if code == 1 {
                             alertMessage = "Success !"
                         } else {
-                            if let message = jsonObject?["errorMessage"] as? String {
-                                alertMessage = message
-                            }
+                            alertMessage = error_message
+//                            if let message = jsonObject?["errorMessage"] as? String {
+//                            }
                         }
                     }
                 } catch {
@@ -288,16 +288,16 @@ extension operationView {
         case "show":
             return
         case "borrow":
-            doRequest(url: urls.borrowbook_url)
+            doRequest(url: urls.borrowbook_url, error_message: "Borrow book error!")
             return
         case "delete":
-            doRequest(url: urls.deletebook_url)
+            doRequest(url: urls.deletebook_url, error_message: "Delete book error!")
             return
         case "add":
-            doRequest(url: urls.addbook_url)
+            doRequest(url: urls.addbook_url, error_message: "Add book error!")
             return
         case "return":
-            doRequest(url: urls.returnbook_url)
+            doRequest(url: urls.returnbook_url, error_message: "Return book error!")
             return
         default:
             return
