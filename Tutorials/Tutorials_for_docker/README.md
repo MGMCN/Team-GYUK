@@ -65,7 +65,7 @@ volumes:
 ## <a name="run">Run docker-compose!</a>
 After executing this command you will see that your computer is successfully running a container with the flask service and mysql service inside
 ```Bash
-$ docker-compose up -d # <- run this
+$ docker-compose up -d --build # <- run this
 .
 .
 .
